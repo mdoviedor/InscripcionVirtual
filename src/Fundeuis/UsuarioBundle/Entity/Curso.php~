@@ -1,0 +1,108 @@
+<?php
+
+namespace Fundeuis\UsuarioBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Curso
+ *
+ * @ORM\Table(name="curso", indexes={@ORM\Index(name="a_curso_idx", columns={"autor"}), @ORM\Index(name="n_curso_idx", columns={"nombreCurso"})})
+ * @ORM\Entity
+ */
+class Curso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idcurso", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcurso;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaInicio", type="datetime", nullable=false)
+     */
+    private $fechainicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaFin", type="datetime", nullable=false)
+     */
+    private $fechafin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duracion", type="string", length=3, nullable=false)
+     */
+    private $duracion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaInicioManana", type="time", nullable=true)
+     */
+    private $horainiciomanana;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaFinManana", type="time", nullable=true)
+     */
+    private $horafinmanana;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaInicioTarde", type="time", nullable=true)
+     */
+    private $horainiciotarde;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaFinTarde", type="time", nullable=true)
+     */
+    private $horafintarde;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intensidadHoraria", type="string", length=2, nullable=false)
+     */
+    private $intensidadhoraria;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     */
+    private $descripcion;
+
+    /**
+     * @var \Administrador
+     *
+     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autor", referencedColumnName="idadministrador")
+     * })
+     */
+    private $autor;
+
+    /**
+     * @var \Nombrecurso
+     *
+     * @ORM\ManyToOne(targetEntity="Nombrecurso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nombreCurso", referencedColumnName="idnombreCurso")
+     * })
+     */
+    private $nombrecurso;
+
+
+}

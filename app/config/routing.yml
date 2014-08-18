@@ -1,0 +1,33 @@
+fundeuis_educacion:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fundeuis_usuario:
+    resource: "@FundeuisUsuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fundeuis_user:
+    resource: "@FundeuisUserBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+
+# app/config/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+

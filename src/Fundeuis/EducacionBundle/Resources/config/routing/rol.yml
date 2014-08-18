@@ -1,0 +1,30 @@
+administrador_configuracion_rol:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:index" }
+
+administrador_configuracion_rol_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:show" }
+
+administrador_configuracion_rol_new:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:new" }
+
+administrador_configuracion_rol_create:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_rol_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:edit" }
+
+administrador_configuracion_rol_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_rol_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:Rol:delete" }
+    requirements: { _method: post|delete }

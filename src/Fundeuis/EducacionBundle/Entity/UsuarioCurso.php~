@@ -1,0 +1,59 @@
+<?php
+
+namespace Fundeuis\EducacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UsuarioCurso
+ *
+ * @ORM\Table(name="usuario_curso", indexes={@ORM\Index(name="fk_usuario_curso_1_idx", columns={"curso"}), @ORM\Index(name="fk_usuario_curso_2_idx", columns={"estudiantenf"})})
+ * @ORM\Entity
+ */
+class UsuarioCurso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idusuario_curso", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idusuarioCurso;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaRegistro", type="datetime", nullable=false)
+     */
+    private $fecharegistro;
+
+    /**
+     * @var \Curso
+     *
+     * @ORM\ManyToOne(targetEntity="Curso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="curso", referencedColumnName="idcurso")
+     * })
+     */
+    private $curso;
+
+    /**
+     * @var \Estudiantenf
+     *
+     * @ORM\ManyToOne(targetEntity="Estudiantenf")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estudiantenf", referencedColumnName="idusuario")
+     * })
+     */
+    private $estudiantenf;
+
+
+}

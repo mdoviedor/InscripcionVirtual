@@ -1,0 +1,7 @@
+parameters:
+#    fundeuis_educacion.example.class: Fundeuis\EducacionBundle\Example
+
+services:
+#    fundeuis_educacion.example:
+#        class: %fundeuis_educacion.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

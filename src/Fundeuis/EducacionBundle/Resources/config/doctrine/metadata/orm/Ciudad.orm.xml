@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Ciudad" table="ciudad">
+    <indexes>
+      <index name="d_ciudad_idx" columns="departamento"/>
+    </indexes>
+    <id name="idciudad" type="integer" column="idciudad">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="45" nullable="false"/>
+    <many-to-one field="departamento" target-entity="Departamento">
+      <join-columns>
+        <join-column name="departamento" referenced-column-name="iddepartamento"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

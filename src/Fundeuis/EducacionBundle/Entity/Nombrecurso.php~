@@ -1,0 +1,32 @@
+<?php
+
+namespace Fundeuis\EducacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Nombrecurso
+ *
+ * @ORM\Table(name="nombreCurso")
+ * @ORM\Entity
+ */
+class Nombrecurso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idnombreCurso", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idnombrecurso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=45, nullable=false)
+     */
+    private $nombre;
+
+
+}

@@ -1,0 +1,30 @@
+administrador_configuracion_nombrecurso:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:index" }
+
+administrador_configuracion_nombrecurso_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:show" }
+
+administrador_configuracion_nombrecurso_new:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:new" }
+
+administrador_configuracion_nombrecurso_create:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_nombrecurso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:edit" }
+
+administrador_configuracion_nombrecurso_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_nombrecurso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:Nombrecurso:delete" }
+    requirements: { _method: post|delete }

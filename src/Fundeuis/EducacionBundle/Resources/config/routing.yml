@@ -1,0 +1,22 @@
+fundeuis_educacion_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FundeuisEducacionBundle:Default:index }
+
+FundeuisEducacionBundle_administrador_configuracion_rol:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/rol.yml"
+    prefix:   /administrador/configuracion/rol
+    
+FundeuisEducacionBundle_administrador_configuracion_nombrecurso:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/nombrecurso.yml"
+    prefix:   /administrador/configuracion/nombrecurso
+    
+FundeuisEducacionBundle_administrador_configuracion_conocimiento:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/conocimiento.yml"
+    prefix:   /administrador/configuracion/conocimiento
+    
+#FundeuisEducacionBundle_administrador_configuracion_administrador:
+#    resource: "@FundeuisEducacionBundle/Resources/config/routing/conocimiento.yml"
+#    prefix:   /administrador/configuracion/administrador
+
+
+

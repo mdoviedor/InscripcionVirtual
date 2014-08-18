@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Administrador" table="administrador">
+    <indexes>
+      <index name="tdi_administrador_idx" columns="tipoDocumentoIdentidad"/>
+      <index name="u_administrador_idx" columns="user"/>
+      <index name="r_administrador_idx" columns="rol"/>
+      <index name="a_administrador_idx" columns="autor"/>
+    </indexes>
+    <id name="idadministrador" type="integer" column="idadministrador">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="documentoidentidad" type="string" column="documentoIdentidad" length="20" nullable="false"/>
+    <field name="nombres" type="string" column="nombres" length="80" nullable="false"/>
+    <field name="apellidos" type="string" column="apellidos" length="80" nullable="false"/>
+    <field name="fecharegistro" type="datetime" column="fechaRegistro" nullable="false"/>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipodocumentoidentidad" target-entity="Tipodocumentoidentidad">
+      <join-columns>
+        <join-column name="tipoDocumentoIdentidad" referenced-column-name="idtipoDocumentoIdentidad"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="rol" target-entity="Rol">
+      <join-columns>
+        <join-column name="rol" referenced-column-name="idrol"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="autor" target-entity="User">
+      <join-columns>
+        <join-column name="autor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

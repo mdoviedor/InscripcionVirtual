@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ProfesorCurso" table="profesor_curso">
+    <indexes>
+      <index name="fk_profesor_curso_1_idx" columns="profesor"/>
+      <index name="fk_profesor_curso_2_idx" columns="curso"/>
+    </indexes>
+    <id name="idprofesorCurso" type="integer" column="idprofesor_curso">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="curso" target-entity="Curso">
+      <join-columns>
+        <join-column name="curso" referenced-column-name="idcurso"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="profesor" target-entity="Profesor">
+      <join-columns>
+        <join-column name="profesor" referenced-column-name="idprofesor"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

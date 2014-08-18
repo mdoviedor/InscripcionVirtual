@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Profesor" table="profesor">
+    <indexes>
+      <index name="fk_profesor_1_idx" columns="rol"/>
+      <index name="fk_profesor_2_idx" columns="tipoDocumentoIdentidad"/>
+      <index name="fk_profesor_3_idx" columns="user"/>
+      <index name="fk_profesor_4_idx" columns="autor"/>
+    </indexes>
+    <id name="idprofesor" type="integer" column="idprofesor">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="documentoidentidad" type="string" column="documentoIdentidad" length="20" nullable="false"/>
+    <field name="nombres" type="string" column="nombres" length="80" nullable="false"/>
+    <field name="apellidos" type="string" column="apellidos" length="80" nullable="false"/>
+    <field name="fecharegistro" type="datetime" column="fechaRegistro" nullable="false"/>
+    <field name="telefono" type="string" column="telefono" length="15" nullable="true"/>
+    <field name="celular" type="string" column="celular" length="15" nullable="true"/>
+    <many-to-one field="autor" target-entity="Administrador">
+      <join-columns>
+        <join-column name="autor" referenced-column-name="idadministrador"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipodocumentoidentidad" target-entity="Tipodocumentoidentidad">
+      <join-columns>
+        <join-column name="tipoDocumentoIdentidad" referenced-column-name="idtipoDocumentoIdentidad"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="rol" target-entity="Rol">
+      <join-columns>
+        <join-column name="rol" referenced-column-name="idrol"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

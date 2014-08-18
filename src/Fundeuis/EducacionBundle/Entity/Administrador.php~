@@ -1,0 +1,93 @@
+<?php
+
+namespace Fundeuis\EducacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Administrador
+ *
+ * @ORM\Table(name="administrador", indexes={@ORM\Index(name="tdi_administrador_idx", columns={"tipoDocumentoIdentidad"}), @ORM\Index(name="u_administrador_idx", columns={"user"}), @ORM\Index(name="r_administrador_idx", columns={"rol"}), @ORM\Index(name="a_administrador_idx", columns={"autor"})})
+ * @ORM\Entity
+ */
+class Administrador
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idadministrador", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idadministrador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="documentoIdentidad", type="string", length=20, nullable=false)
+     */
+    private $documentoidentidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombres", type="string", length=80, nullable=false)
+     */
+    private $nombres;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=80, nullable=false)
+     */
+    private $apellidos;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaRegistro", type="datetime", nullable=false)
+     */
+    private $fecharegistro;
+
+    /**
+     * @var \Tipodocumentoidentidad
+     *
+     * @ORM\ManyToOne(targetEntity="Tipodocumentoidentidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoDocumentoIdentidad", referencedColumnName="idtipoDocumentoIdentidad")
+     * })
+     */
+    private $tipodocumentoidentidad;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Rol
+     *
+     * @ORM\ManyToOne(targetEntity="Rol")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rol", referencedColumnName="idrol")
+     * })
+     */
+    private $rol;
+
+    /**
+     * @var \Administrador
+     *
+     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autor", referencedColumnName="idadministrador")
+     * })
+     */
+    private $autor;
+
+
+}

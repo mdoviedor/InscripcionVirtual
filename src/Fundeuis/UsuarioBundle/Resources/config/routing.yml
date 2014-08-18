@@ -1,0 +1,11 @@
+fundeuis_usuario_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FundeuisUsuarioBundle:Default:index }
+    
+FundeuisUsuarioBundle_administrador_configuracion_administrador:
+    resource: "@FundeuisUsuarioBundle/Resources/config/routing/administrador.yml"
+    prefix:   /administrador/configuracion/administrador
+    
+FundeuisUsuarioBundle_administrador_configuracion_tipodocumentoidentidad:
+    resource: "@FundeuisUsuarioBundle/Resources/config/routing/tipodocumentoidentidad.yml"
+    prefix:   /administrador/configuracion/tipodocumentoidentidad

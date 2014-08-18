@@ -1,0 +1,44 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+      <h1>Tipodocumentoidentidad</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+{% block contenido %} 
+ 
+
+    <table class="table tab-content table-hover table-striped record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_configuracion_tipodocumentoidentidad') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('administrador_configuracion_tipodocumentoidentidad_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+{% block mitadizquierdo %}
+{% endblock %}
+{% block mitadderecho %}
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

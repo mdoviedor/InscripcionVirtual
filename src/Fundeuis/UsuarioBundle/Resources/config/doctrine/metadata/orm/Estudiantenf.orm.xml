@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Estudiantenf" table="estudiantenf">
+    <indexes>
+      <index name="u_estudianteenf_idx" columns="user"/>
+      <index name="u_rol_idx" columns="rol"/>
+      <index name="autor_estudiantenf_idx" columns="autor"/>
+      <index name="p_estudiantenf_idx" columns="programaAcademico"/>
+      <index name="tdi_estudiantenf_idx" columns="tipoDocumentoIdentidad"/>
+      <index name="c_estudiantenf_idx" columns="ciudad"/>
+      <index name="co_estudiantenf_idx" columns="conocimiento"/>
+    </indexes>
+    <id name="idusuario" type="bigint" column="idusuario">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="documentoidentidad" type="string" column="documentoIdentidad" length="20" nullable="false"/>
+    <field name="nombres" type="string" column="nombres" length="80" nullable="false"/>
+    <field name="apellidos" type="string" column="apellidos" length="80" nullable="false"/>
+    <field name="edad" type="string" column="edad" length="2" nullable="false"/>
+    <field name="telefono" type="string" column="telefono" length="15" nullable="true"/>
+    <field name="celular" type="string" column="celular" length="15" nullable="true"/>
+    <field name="estrato" type="string" column="estrato" length="1" nullable="false"/>
+    <field name="universidad" type="string" column="universidad" length="200" nullable="false"/>
+    <field name="colegio" type="string" column="colegio" length="200" nullable="false"/>
+    <field name="nombresacudiente" type="string" column="nombresAcudiente" length="80" nullable="false"/>
+    <field name="apellidosacudiente" type="string" column="apellidosAcudiente" length="80" nullable="false"/>
+    <field name="telefonoacudiente" type="string" column="telefonoAcudiente" length="15" nullable="false"/>
+    <many-to-one field="ciudad" target-entity="Ciudad">
+      <join-columns>
+        <join-column name="ciudad" referenced-column-name="idciudad"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conocimiento" target-entity="Conocimiento">
+      <join-columns>
+        <join-column name="conocimiento" referenced-column-name="idconocimiento"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipodocumentoidentidad" target-entity="Tipodocumentoidentidad">
+      <join-columns>
+        <join-column name="tipoDocumentoIdentidad" referenced-column-name="idtipoDocumentoIdentidad"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="programaacademico" target-entity="Programaacademico">
+      <join-columns>
+        <join-column name="programaAcademico" referenced-column-name="idprogramaAcademico"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="rol" target-entity="Rol">
+      <join-columns>
+        <join-column name="rol" referenced-column-name="idrol"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="autor" target-entity="Administrador">
+      <join-columns>
+        <join-column name="autor" referenced-column-name="idadministrador"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

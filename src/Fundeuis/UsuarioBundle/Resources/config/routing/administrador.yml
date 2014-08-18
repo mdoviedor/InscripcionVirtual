@@ -1,0 +1,30 @@
+administrador_configuracion_administrador:
+    path:     /
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:index" }
+
+administrador_configuracion_administrador_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:show" }
+
+administrador_configuracion_administrador_new:
+    path:     /new
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:new" }
+
+administrador_configuracion_administrador_create:
+    path:     /create
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_administrador_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:edit" }
+
+administrador_configuracion_administrador_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_administrador_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisUsuarioBundle:Administrador:delete" }
+    requirements: { _method: post|delete }

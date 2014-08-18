@@ -1,0 +1,30 @@
+administrador_configuracion_conocimiento:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:index" }
+
+administrador_configuracion_conocimiento_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:show" }
+
+administrador_configuracion_conocimiento_new:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:new" }
+
+administrador_configuracion_conocimiento_create:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_conocimiento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:edit" }
+
+administrador_configuracion_conocimiento_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_conocimiento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:Conocimiento:delete" }
+    requirements: { _method: post|delete }

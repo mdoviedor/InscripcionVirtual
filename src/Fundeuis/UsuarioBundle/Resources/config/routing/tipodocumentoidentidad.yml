@@ -1,0 +1,30 @@
+administrador_configuracion_tipodocumentoidentidad:
+    path:     /
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:index" }
+
+administrador_configuracion_tipodocumentoidentidad_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:show" }
+
+administrador_configuracion_tipodocumentoidentidad_new:
+    path:     /new
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:new" }
+
+administrador_configuracion_tipodocumentoidentidad_create:
+    path:     /create
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_tipodocumentoidentidad_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:edit" }
+
+administrador_configuracion_tipodocumentoidentidad_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_tipodocumentoidentidad_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisUsuarioBundle:Tipodocumentoidentidad:delete" }
+    requirements: { _method: post|delete }

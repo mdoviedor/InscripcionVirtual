@@ -1,0 +1,371 @@
+<?php
+
+namespace Fundeuis\UsuarioBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Curso
+ *
+ * @ORM\Table(name="curso", indexes={@ORM\Index(name="a_curso_idx", columns={"autor"}), @ORM\Index(name="n_curso_idx", columns={"nombreCurso"})})
+ * @ORM\Entity
+ */
+class Curso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idcurso", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcurso;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaInicio", type="datetime", nullable=false)
+     */
+    private $fechainicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaFin", type="datetime", nullable=false)
+     */
+    private $fechafin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duracion", type="string", length=3, nullable=false)
+     */
+    private $duracion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaInicioManana", type="time", nullable=true)
+     */
+    private $horainiciomanana;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaFinManana", type="time", nullable=true)
+     */
+    private $horafinmanana;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaInicioTarde", type="time", nullable=true)
+     */
+    private $horainiciotarde;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="horaFinTarde", type="time", nullable=true)
+     */
+    private $horafintarde;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intensidadHoraria", type="string", length=2, nullable=false)
+     */
+    private $intensidadhoraria;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     */
+    private $descripcion;
+
+    /**
+     * @var \Administrador
+     *
+     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autor", referencedColumnName="idadministrador")
+     * })
+     */
+    private $autor;
+
+    /**
+     * @var \Nombrecurso
+     *
+     * @ORM\ManyToOne(targetEntity="Nombrecurso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nombreCurso", referencedColumnName="idnombreCurso")
+     * })
+     */
+    private $nombrecurso;
+
+
+
+    /**
+     * Get idcurso
+     *
+     * @return integer 
+     */
+    public function getIdcurso()
+    {
+        return $this->idcurso;
+    }
+
+    /**
+     * Set fechainicio
+     *
+     * @param \DateTime $fechainicio
+     * @return Curso
+     */
+    public function setFechainicio($fechainicio)
+    {
+        $this->fechainicio = $fechainicio;
+
+        return $this;
+    }
+
+    /**
+     * Get fechainicio
+     *
+     * @return \DateTime 
+     */
+    public function getFechainicio()
+    {
+        return $this->fechainicio;
+    }
+
+    /**
+     * Set fechafin
+     *
+     * @param \DateTime $fechafin
+     * @return Curso
+     */
+    public function setFechafin($fechafin)
+    {
+        $this->fechafin = $fechafin;
+
+        return $this;
+    }
+
+    /**
+     * Get fechafin
+     *
+     * @return \DateTime 
+     */
+    public function getFechafin()
+    {
+        return $this->fechafin;
+    }
+
+    /**
+     * Set duracion
+     *
+     * @param string $duracion
+     * @return Curso
+     */
+    public function setDuracion($duracion)
+    {
+        $this->duracion = $duracion;
+
+        return $this;
+    }
+
+    /**
+     * Get duracion
+     *
+     * @return string 
+     */
+    public function getDuracion()
+    {
+        return $this->duracion;
+    }
+
+    /**
+     * Set horainiciomanana
+     *
+     * @param \DateTime $horainiciomanana
+     * @return Curso
+     */
+    public function setHorainiciomanana($horainiciomanana)
+    {
+        $this->horainiciomanana = $horainiciomanana;
+
+        return $this;
+    }
+
+    /**
+     * Get horainiciomanana
+     *
+     * @return \DateTime 
+     */
+    public function getHorainiciomanana()
+    {
+        return $this->horainiciomanana;
+    }
+
+    /**
+     * Set horafinmanana
+     *
+     * @param \DateTime $horafinmanana
+     * @return Curso
+     */
+    public function setHorafinmanana($horafinmanana)
+    {
+        $this->horafinmanana = $horafinmanana;
+
+        return $this;
+    }
+
+    /**
+     * Get horafinmanana
+     *
+     * @return \DateTime 
+     */
+    public function getHorafinmanana()
+    {
+        return $this->horafinmanana;
+    }
+
+    /**
+     * Set horainiciotarde
+     *
+     * @param \DateTime $horainiciotarde
+     * @return Curso
+     */
+    public function setHorainiciotarde($horainiciotarde)
+    {
+        $this->horainiciotarde = $horainiciotarde;
+
+        return $this;
+    }
+
+    /**
+     * Get horainiciotarde
+     *
+     * @return \DateTime 
+     */
+    public function getHorainiciotarde()
+    {
+        return $this->horainiciotarde;
+    }
+
+    /**
+     * Set horafintarde
+     *
+     * @param \DateTime $horafintarde
+     * @return Curso
+     */
+    public function setHorafintarde($horafintarde)
+    {
+        $this->horafintarde = $horafintarde;
+
+        return $this;
+    }
+
+    /**
+     * Get horafintarde
+     *
+     * @return \DateTime 
+     */
+    public function getHorafintarde()
+    {
+        return $this->horafintarde;
+    }
+
+    /**
+     * Set intensidadhoraria
+     *
+     * @param string $intensidadhoraria
+     * @return Curso
+     */
+    public function setIntensidadhoraria($intensidadhoraria)
+    {
+        $this->intensidadhoraria = $intensidadhoraria;
+
+        return $this;
+    }
+
+    /**
+     * Get intensidadhoraria
+     *
+     * @return string 
+     */
+    public function getIntensidadhoraria()
+    {
+        return $this->intensidadhoraria;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Curso
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set autor
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Administrador $autor
+     * @return Curso
+     */
+    public function setAutor(\Fundeuis\UsuarioBundle\Entity\Administrador $autor = null)
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
+    /**
+     * Get autor
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Administrador 
+     */
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+
+    /**
+     * Set nombrecurso
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Nombrecurso $nombrecurso
+     * @return Curso
+     */
+    public function setNombrecurso(\Fundeuis\UsuarioBundle\Entity\Nombrecurso $nombrecurso = null)
+    {
+        $this->nombrecurso = $nombrecurso;
+
+        return $this;
+    }
+
+    /**
+     * Get nombrecurso
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Nombrecurso 
+     */
+    public function getNombrecurso()
+    {
+        return $this->nombrecurso;
+    }
+}

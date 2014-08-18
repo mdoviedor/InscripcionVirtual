@@ -1,0 +1,26 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+    <h1>Tipodocumentoidentidad edit</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+{% block contenido %} 
+    {{ form(edit_form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_configuracion_tipodocumentoidentidad') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+{% block mitadizquierdo %}
+{% endblock %}
+{% block mitadderecho %}
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
