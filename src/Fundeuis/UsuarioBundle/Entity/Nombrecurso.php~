@@ -29,4 +29,37 @@ class Nombrecurso
     private $nombre;
 
 
+
+    /**
+     * Get idnombrecurso
+     *
+     * @return integer 
+     */
+    public function getIdnombrecurso()
+    {
+        return $this->idnombrecurso;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Nombrecurso
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
 }

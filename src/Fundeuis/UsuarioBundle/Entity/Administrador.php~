@@ -88,6 +88,200 @@ class Administrador
      * })
      */
     private $user;
+    
+   
 
+    /**
+     * Get idadministrador
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->idadministrador;
+    }
 
+    /**
+     * Set documentoidentidad
+     *
+     * @param string $documentoidentidad
+     * @return Administrador
+     */
+    public function setDocumentoidentidad($documentoidentidad)
+    {
+        $this->documentoidentidad = $documentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get documentoidentidad
+     *
+     * @return string 
+     */
+    public function getDocumentoidentidad()
+    {
+        return $this->documentoidentidad;
+    }
+
+    /**
+     * Set nombres
+     *
+     * @param string $nombres
+     * @return Administrador
+     */
+    public function setNombres($nombres)
+    {
+        $this->nombres = $nombres;
+
+        return $this;
+    }
+
+    /**
+     * Get nombres
+     *
+     * @return string 
+     */
+    public function getNombres()
+    {
+        return $this->nombres;
+    }
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     * @return Administrador
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string 
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set fecharegistro
+     *
+     * @param \DateTime $fecharegistro
+     * @return Administrador
+     */
+    public function setFecharegistro($fecharegistro)
+    {
+        $this->fecharegistro = $fecharegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get fecharegistro
+     *
+     * @return \DateTime 
+     */
+    public function getFecharegistro()
+    {
+        return $this->fecharegistro;
+    }
+
+    /**
+     * Set autor
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\User $autor
+     * @return Administrador
+     */
+    public function setAutor(\Fundeuis\UsuarioBundle\Entity\User $autor = null)
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
+    /**
+     * Get autor
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\User 
+     */
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+
+    /**
+     * Set rol
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Rol $rol
+     * @return Administrador
+     */
+    public function setRol(\Fundeuis\UsuarioBundle\Entity\Rol $rol = null)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Rol 
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set tipodocumentoidentidad
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad
+     * @return Administrador
+     */
+    public function setTipodocumentoidentidad(\Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad = null)
+    {
+        $this->tipodocumentoidentidad = $tipodocumentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get tipodocumentoidentidad
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad 
+     */
+    public function getTipodocumentoidentidad()
+    {
+        return $this->tipodocumentoidentidad;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\User $user
+     * @return Administrador
+     */
+    public function setUser(\Fundeuis\UsuarioBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

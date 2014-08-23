@@ -39,4 +39,60 @@ class Ciudad
     private $departamento;
 
 
+
+    /**
+     * Get idciudad
+     *
+     * @return integer 
+     */
+    public function getIdciudad()
+    {
+        return $this->idciudad;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Ciudad
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set departamento
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Departamento $departamento
+     * @return Ciudad
+     */
+    public function setDepartamento(\Fundeuis\UsuarioBundle\Entity\Departamento $departamento = null)
+    {
+        $this->departamento = $departamento;
+
+        return $this;
+    }
+
+    /**
+     * Get departamento
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Departamento 
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+    }
 }

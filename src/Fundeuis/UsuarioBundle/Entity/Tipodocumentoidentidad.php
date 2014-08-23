@@ -66,4 +66,14 @@ class Tipodocumentoidentidad
     public function __toString() {
         return $this->nombre;
     }
+
+    /**
+     * Get idtipodocumentoidentidad
+     *
+     * @return integer 
+     */
+    public function getIdtipodocumentoidentidad()
+    {
+        return $this->idtipodocumentoidentidad;
+    }
 }

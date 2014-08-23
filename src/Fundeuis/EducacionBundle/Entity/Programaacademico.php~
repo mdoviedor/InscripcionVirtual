@@ -29,4 +29,51 @@ class Programaacademico
     private $nombre;
 
 
+
+    /**
+     * Get idprogramaacademico
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->idprogramaacademico;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Programaacademico
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    
+    public function __toString() {
+        return $this->nombre;
+    }
+
+    /**
+     * Get idprogramaacademico
+     *
+     * @return integer 
+     */
+    public function getIdprogramaacademico()
+    {
+        return $this->idprogramaacademico;
+    }
 }

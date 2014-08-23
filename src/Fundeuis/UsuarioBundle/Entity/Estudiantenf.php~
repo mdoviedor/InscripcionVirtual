@@ -176,4 +176,451 @@ class Estudiantenf
     private $conocimiento;
 
 
+
+    /**
+     * Get idusuario
+     *
+     * @return integer 
+     */
+    public function getIdusuario()
+    {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set documentoidentidad
+     *
+     * @param string $documentoidentidad
+     * @return Estudiantenf
+     */
+    public function setDocumentoidentidad($documentoidentidad)
+    {
+        $this->documentoidentidad = $documentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get documentoidentidad
+     *
+     * @return string 
+     */
+    public function getDocumentoidentidad()
+    {
+        return $this->documentoidentidad;
+    }
+
+    /**
+     * Set nombres
+     *
+     * @param string $nombres
+     * @return Estudiantenf
+     */
+    public function setNombres($nombres)
+    {
+        $this->nombres = $nombres;
+
+        return $this;
+    }
+
+    /**
+     * Get nombres
+     *
+     * @return string 
+     */
+    public function getNombres()
+    {
+        return $this->nombres;
+    }
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     * @return Estudiantenf
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string 
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set edad
+     *
+     * @param string $edad
+     * @return Estudiantenf
+     */
+    public function setEdad($edad)
+    {
+        $this->edad = $edad;
+
+        return $this;
+    }
+
+    /**
+     * Get edad
+     *
+     * @return string 
+     */
+    public function getEdad()
+    {
+        return $this->edad;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Estudiantenf
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set celular
+     *
+     * @param string $celular
+     * @return Estudiantenf
+     */
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+
+        return $this;
+    }
+
+    /**
+     * Get celular
+     *
+     * @return string 
+     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
+
+    /**
+     * Set estrato
+     *
+     * @param string $estrato
+     * @return Estudiantenf
+     */
+    public function setEstrato($estrato)
+    {
+        $this->estrato = $estrato;
+
+        return $this;
+    }
+
+    /**
+     * Get estrato
+     *
+     * @return string 
+     */
+    public function getEstrato()
+    {
+        return $this->estrato;
+    }
+
+    /**
+     * Set universidad
+     *
+     * @param string $universidad
+     * @return Estudiantenf
+     */
+    public function setUniversidad($universidad)
+    {
+        $this->universidad = $universidad;
+
+        return $this;
+    }
+
+    /**
+     * Get universidad
+     *
+     * @return string 
+     */
+    public function getUniversidad()
+    {
+        return $this->universidad;
+    }
+
+    /**
+     * Set colegio
+     *
+     * @param string $colegio
+     * @return Estudiantenf
+     */
+    public function setColegio($colegio)
+    {
+        $this->colegio = $colegio;
+
+        return $this;
+    }
+
+    /**
+     * Get colegio
+     *
+     * @return string 
+     */
+    public function getColegio()
+    {
+        return $this->colegio;
+    }
+
+    /**
+     * Set nombresacudiente
+     *
+     * @param string $nombresacudiente
+     * @return Estudiantenf
+     */
+    public function setNombresacudiente($nombresacudiente)
+    {
+        $this->nombresacudiente = $nombresacudiente;
+
+        return $this;
+    }
+
+    /**
+     * Get nombresacudiente
+     *
+     * @return string 
+     */
+    public function getNombresacudiente()
+    {
+        return $this->nombresacudiente;
+    }
+
+    /**
+     * Set apellidosacudiente
+     *
+     * @param string $apellidosacudiente
+     * @return Estudiantenf
+     */
+    public function setApellidosacudiente($apellidosacudiente)
+    {
+        $this->apellidosacudiente = $apellidosacudiente;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidosacudiente
+     *
+     * @return string 
+     */
+    public function getApellidosacudiente()
+    {
+        return $this->apellidosacudiente;
+    }
+
+    /**
+     * Set telefonoacudiente
+     *
+     * @param string $telefonoacudiente
+     * @return Estudiantenf
+     */
+    public function setTelefonoacudiente($telefonoacudiente)
+    {
+        $this->telefonoacudiente = $telefonoacudiente;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonoacudiente
+     *
+     * @return string 
+     */
+    public function getTelefonoacudiente()
+    {
+        return $this->telefonoacudiente;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\User $user
+     * @return Estudiantenf
+     */
+    public function setUser(\Fundeuis\UsuarioBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set rol
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Rol $rol
+     * @return Estudiantenf
+     */
+    public function setRol(\Fundeuis\UsuarioBundle\Entity\Rol $rol = null)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Rol 
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set autor
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Administrador $autor
+     * @return Estudiantenf
+     */
+    public function setAutor(\Fundeuis\UsuarioBundle\Entity\Administrador $autor = null)
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
+    /**
+     * Get autor
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Administrador 
+     */
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+
+    /**
+     * Set programaacademico
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Programaacademico $programaacademico
+     * @return Estudiantenf
+     */
+    public function setProgramaacademico(\Fundeuis\UsuarioBundle\Entity\Programaacademico $programaacademico = null)
+    {
+        $this->programaacademico = $programaacademico;
+
+        return $this;
+    }
+
+    /**
+     * Get programaacademico
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Programaacademico 
+     */
+    public function getProgramaacademico()
+    {
+        return $this->programaacademico;
+    }
+
+    /**
+     * Set tipodocumentoidentidad
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad
+     * @return Estudiantenf
+     */
+    public function setTipodocumentoidentidad(\Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad = null)
+    {
+        $this->tipodocumentoidentidad = $tipodocumentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get tipodocumentoidentidad
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad 
+     */
+    public function getTipodocumentoidentidad()
+    {
+        return $this->tipodocumentoidentidad;
+    }
+
+    /**
+     * Set ciudad
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Ciudad $ciudad
+     * @return Estudiantenf
+     */
+    public function setCiudad(\Fundeuis\UsuarioBundle\Entity\Ciudad $ciudad = null)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Ciudad 
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Set conocimiento
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Conocimiento $conocimiento
+     * @return Estudiantenf
+     */
+    public function setConocimiento(\Fundeuis\UsuarioBundle\Entity\Conocimiento $conocimiento = null)
+    {
+        $this->conocimiento = $conocimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get conocimiento
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Conocimiento 
+     */
+    public function getConocimiento()
+    {
+        return $this->conocimiento;
+    }
 }

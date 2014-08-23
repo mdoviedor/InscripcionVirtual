@@ -111,7 +111,7 @@ class Curso
      *
      * @return integer 
      */
-    public function getIdcurso()
+    public function getId()
     {
         return $this->idcurso;
     }
@@ -367,5 +367,15 @@ class Curso
     public function getNombrecurso()
     {
         return $this->nombrecurso;
+    }
+
+    /**
+     * Get idcurso
+     *
+     * @return integer 
+     */
+    public function getIdcurso()
+    {
+        return $this->idcurso;
     }
 }

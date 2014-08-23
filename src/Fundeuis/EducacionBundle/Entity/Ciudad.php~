@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ciudad
  *
  * @ORM\Table(name="ciudad", indexes={@ORM\Index(name="d_ciudad_idx", columns={"departamento"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fundeuis\EducacionBundle\Entity\CiudadRepository")
  */
 class Ciudad
 {
@@ -39,4 +39,60 @@ class Ciudad
     private $departamento;
 
 
+
+    /**
+     * Get idciudad
+     *
+     * @return integer 
+     */
+    public function getIdciudad()
+    {
+        return $this->idciudad;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Ciudad
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set departamento
+     *
+     * @param \Fundeuis\EducacionBundle\Entity\Departamento $departamento
+     * @return Ciudad
+     */
+    public function setDepartamento(\Fundeuis\EducacionBundle\Entity\Departamento $departamento = null)
+    {
+        $this->departamento = $departamento;
+
+        return $this;
+    }
+
+    /**
+     * Get departamento
+     *
+     * @return \Fundeuis\EducacionBundle\Entity\Departamento 
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+    }
 }

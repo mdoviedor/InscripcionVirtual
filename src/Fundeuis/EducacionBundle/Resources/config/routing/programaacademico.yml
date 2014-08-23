@@ -1,0 +1,30 @@
+administrador_configuracion_programaacademico:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:index" }
+
+administrador_configuracion_programaacademico_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:show" }
+
+administrador_configuracion_programaacademico_new:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:new" }
+
+administrador_configuracion_programaacademico_create:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:create" }
+    requirements: { _method: post }
+
+administrador_configuracion_programaacademico_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:edit" }
+
+administrador_configuracion_programaacademico_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:update" }
+    requirements: { _method: post|put }
+
+administrador_configuracion_programaacademico_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:Programaacademico:delete" }
+    requirements: { _method: post|delete }

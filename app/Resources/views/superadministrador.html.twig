@@ -20,7 +20,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href=""><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                    <li><a href="">Usuarios</a></li>                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Educación NF<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('administrador_educacion_curso')}}">Cursos</a></li>                     
+                            <li><a href="{{path('administrador_configuracion_rol')}}">Estudiantes</a></li>
+
+
+                            {# <li><a href="{{ path('gs_proyectos_recursos_buscar') }}">Gestor de Recursos</a></li>#}
+                        </ul>
+                    </li>              
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestor de Atributos<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -72,6 +81,33 @@
             </div>
         </div>
 
+        {% block notificaciones %}
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="flash-notice">
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <strong>Felicidades!</strong> {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="flash-notice">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <strong>Error!</strong> {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('alerta') %}
+                <div class="flash-notice">
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <strong>Alerta!</strong> {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endblock %}
+
         {% block contenido %}
         {% endblock %}
 
@@ -89,4 +125,17 @@
 
 {% endblock %}
 {% block javascripts %}
+    <script type="text/javascript">
+        function ConfirmarAccion()
+        {
+            if (confirm("¿Desea ejecutar esta acción?"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    </script>
 {% endblock %}

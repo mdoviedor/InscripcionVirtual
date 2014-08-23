@@ -1,0 +1,21 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+    <h1>Curso creation</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}   
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_educacion_curso') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

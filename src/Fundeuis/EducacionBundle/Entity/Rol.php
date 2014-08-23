@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rol")
  * @ORM\Entity
  */
-class Rol
-{
+class Rol {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class Rol
      */
     private $nombre;
 
-
-
     /**
      * Get idrol
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->idrol;
     }
 
@@ -46,8 +43,7 @@ class Rol
      * @param string $nombre
      * @return Rol
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -58,8 +54,22 @@ class Rol
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
+    }
+
+    public function __toString() {
+        return $this->nombre;
+    }
+
+
+    /**
+     * Get idrol
+     *
+     * @return integer 
+     */
+    public function getIdrol()
+    {
+        return $this->idrol;
     }
 }

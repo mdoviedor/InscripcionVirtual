@@ -1,0 +1,108 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+    <h1>Estudiantenf</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}   
+
+
+    <table class="table tab-content table-hover table-striped record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Documentoidentidad</th>
+                <td>{{ entity.documentoidentidad }}</td>
+            </tr>
+            <tr>
+                <th>Tipodocumentoidentidad</th>
+                <td>{{ entity.tipodocumentoidentidad }}</td>
+            </tr>
+            <tr>
+                <th>Nombres</th>
+                <td>{{ entity.nombres }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ entity.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>{{ entity.edad }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ entity.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ entity.celular }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad de residencia</th>
+                <td>{{ entity.ciudad.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Departamento de residencia</th>
+                <td>{{ entity.ciudad.departamento.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Estrato</th>
+                <td>{{ entity.estrato }}</td>
+            </tr>
+            <tr>
+                <th>Universidad</th>
+                <td>{{ entity.universidad }}</td>
+            </tr>
+            <tr>
+                <th>Programaacademico</th>
+                <td>{{ entity.programaacademico }}</td>
+            </tr>
+            <tr>
+                <th>Colegio</th>
+                <td>{{ entity.colegio }}</td>
+            </tr>
+            <tr>
+                <th>¿Cómo nos conocio?</th>
+                <td>{{ entity.conocimiento }}</td>
+            </tr>
+            <tr>
+                <th>Nombresacudiente</th>
+                <td>{{ entity.nombresacudiente }}</td>
+            </tr>
+            <tr>
+                <th>Apellidosacudiente</th>
+                <td>{{ entity.apellidosacudiente }}</td>
+            </tr>
+            <tr>
+                <th>Telefonoacudiente</th>
+                <td>{{ entity.telefonoacudiente }}</td>
+            </tr>
+            <tr>
+                <th>Autor</th>
+                <td>{{ entity.autor.nombres }} {{ entity.autor.apellidos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_educacion_estudiantenf') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+

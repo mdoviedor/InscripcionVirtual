@@ -35,7 +35,7 @@ class Programaacademico
      *
      * @return integer 
      */
-    public function getIdprogramaacademico()
+    public function getId()
     {
         return $this->idprogramaacademico;
     }
@@ -61,5 +61,19 @@ class Programaacademico
     public function getNombre()
     {
         return $this->nombre;
+    }
+    
+    public function __toString() {
+        return $this->nombre;
+    }
+
+    /**
+     * Get idprogramaacademico
+     *
+     * @return integer 
+     */
+    public function getIdprogramaacademico()
+    {
+        return $this->idprogramaacademico;
     }
 }

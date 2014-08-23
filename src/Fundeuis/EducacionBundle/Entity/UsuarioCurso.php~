@@ -56,4 +56,106 @@ class UsuarioCurso
     private $estudiantenf;
 
 
+
+    /**
+     * Get idusuarioCurso
+     *
+     * @return integer 
+     */
+    public function getIdusuarioCurso()
+    {
+        return $this->idusuarioCurso;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param boolean $estado
+     * @return UsuarioCurso
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return boolean 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set fecharegistro
+     *
+     * @param \DateTime $fecharegistro
+     * @return UsuarioCurso
+     */
+    public function setFecharegistro($fecharegistro)
+    {
+        $this->fecharegistro = $fecharegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get fecharegistro
+     *
+     * @return \DateTime 
+     */
+    public function getFecharegistro()
+    {
+        return $this->fecharegistro;
+    }
+
+    /**
+     * Set curso
+     *
+     * @param \Fundeuis\EducacionBundle\Entity\Curso $curso
+     * @return UsuarioCurso
+     */
+    public function setCurso(\Fundeuis\EducacionBundle\Entity\Curso $curso = null)
+    {
+        $this->curso = $curso;
+
+        return $this;
+    }
+
+    /**
+     * Get curso
+     *
+     * @return \Fundeuis\EducacionBundle\Entity\Curso 
+     */
+    public function getCurso()
+    {
+        return $this->curso;
+    }
+
+    /**
+     * Set estudiantenf
+     *
+     * @param \Fundeuis\EducacionBundle\Entity\Estudiantenf $estudiantenf
+     * @return UsuarioCurso
+     */
+    public function setEstudiantenf(\Fundeuis\EducacionBundle\Entity\Estudiantenf $estudiantenf = null)
+    {
+        $this->estudiantenf = $estudiantenf;
+
+        return $this;
+    }
+
+    /**
+     * Get estudiantenf
+     *
+     * @return \Fundeuis\EducacionBundle\Entity\Estudiantenf 
+     */
+    public function getEstudiantenf()
+    {
+        return $this->estudiantenf;
+    }
 }

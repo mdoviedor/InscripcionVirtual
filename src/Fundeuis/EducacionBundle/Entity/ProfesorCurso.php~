@@ -42,4 +42,60 @@ class ProfesorCurso
     private $curso;
 
 
+
+    /**
+     * Get idprofesorCurso
+     *
+     * @return integer 
+     */
+    public function getIdprofesorCurso()
+    {
+        return $this->idprofesorCurso;
+    }
+
+    /**
+     * Set profesor
+     *
+     * @param \Fundeuis\EducacionBundle\Entity\Profesor $profesor
+     * @return ProfesorCurso
+     */
+    public function setProfesor(\Fundeuis\EducacionBundle\Entity\Profesor $profesor = null)
+    {
+        $this->profesor = $profesor;
+
+        return $this;
+    }
+
+    /**
+     * Get profesor
+     *
+     * @return \Fundeuis\EducacionBundle\Entity\Profesor 
+     */
+    public function getProfesor()
+    {
+        return $this->profesor;
+    }
+
+    /**
+     * Set curso
+     *
+     * @param \Fundeuis\EducacionBundle\Entity\Curso $curso
+     * @return ProfesorCurso
+     */
+    public function setCurso(\Fundeuis\EducacionBundle\Entity\Curso $curso = null)
+    {
+        $this->curso = $curso;
+
+        return $this;
+    }
+
+    /**
+     * Get curso
+     *
+     * @return \Fundeuis\EducacionBundle\Entity\Curso 
+     */
+    public function getCurso()
+    {
+        return $this->curso;
+    }
 }

@@ -29,4 +29,37 @@ class Conocimiento
     private $descripcion;
 
 
+
+    /**
+     * Get idconocimiento
+     *
+     * @return integer 
+     */
+    public function getIdconocimiento()
+    {
+        return $this->idconocimiento;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Conocimiento
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
 }

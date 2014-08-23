@@ -8,11 +8,22 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AdministradorType extends AbstractType {
 
+    private $correoElectronico = null;
+
+    public function __construct($correoElectronico) {
+      
+        $this->correoElectronico = $correoElectronico;
+
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+
+
+
         $builder
                 ->add('documentoidentidad', 'repeated', array(
                     'type' => 'text',
@@ -27,14 +38,15 @@ class AdministradorType extends AbstractType {
                 ->add('correoElectronico', 'repeated', array(
                     'mapped' => false,
                     'type' => 'email',
+                    
                     'invalid_message' => 'Los campos deben coincidir.',
                     'required' => true,
                     'first_options' => array(
                         'label' => '* Correo electrónico:',
-                        'attr' => array('class' => 'form-control')),
+                        'attr' => array('class' => 'form-control', 'value'=>  $this->correoElectronico)),
                     'second_options' => array(
                         'label' => '* Repita Correo electrónico:',
-                        'attr' => array('class' => 'form-control'))))
+                        'attr' => array('class' => 'form-control', 'value'=>  $this->correoElectronico))))
                 ->add('nombres', 'text', array(
                     'label' => '* Nombres:',
                     'attr' => array('class' => 'form-control')))
@@ -48,7 +60,7 @@ class AdministradorType extends AbstractType {
                     'attr' => array('class' => 'form-control'))
                 )
                 //->add('user')
-                ->add('rol', null,  array(
+                ->add('rol', null, array(
                     'label' => '* Rol:',
                     'attr' => array('class' => 'form-control')
                 ))

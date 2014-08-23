@@ -1,0 +1,62 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+    <h1>Curso list</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}    
+
+
+    <table class="table tab-content table-hover table-striped records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Duracion</th>
+                <th>Horariomañana</th>         
+                <th>Horariotarde</th>    
+                <th>Intensidadhoraria</th>
+                <th>Descripcion</th>
+                <th>Nombre curso</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('administrador_educacion_curso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{% if entity.fechainicio %}{{ entity.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if entity.fechafin %}{{ entity.fechafin|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ entity.duracion }}</td>
+                    <td>{{ entity.horainiciomanana|date('H:i:s')   }} - {{ entity.horafinmanana|date('H:i:s')   }}</td>
+                    <td>{{ entity.horainiciotarde|date('H:i:s')   }} - {{ entity.horafintarde|date('H:i:s')   }}</td>
+                    <td>{{ entity.intensidadhoraria }}</td>
+                    <td>{{ entity.descripcion }}</td>
+                    <td>{{ entity.nombrecurso.nombre }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('administrador_educacion_curso_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_educacion_curso_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('administrador_educacion_curso_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

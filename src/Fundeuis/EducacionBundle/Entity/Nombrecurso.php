@@ -62,4 +62,18 @@ class Nombrecurso
     {
         return $this->nombre;
     }
+    
+    public function __toString() {
+        return $this->nombre;;
+    }
+
+    /**
+     * Get idnombrecurso
+     *
+     * @return integer 
+     */
+    public function getIdnombrecurso()
+    {
+        return $this->idnombrecurso;
+    }
 }

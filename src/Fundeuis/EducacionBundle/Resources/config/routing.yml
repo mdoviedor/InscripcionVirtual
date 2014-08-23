@@ -14,6 +14,18 @@ FundeuisEducacionBundle_administrador_configuracion_conocimiento:
     resource: "@FundeuisEducacionBundle/Resources/config/routing/conocimiento.yml"
     prefix:   /administrador/configuracion/conocimiento
     
+FundeuisEducacionBundle_administrador_educacion_cursos:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/curso.yml"
+    prefix:   /administrador/educacion/cursos
+
+FundeuisEducacionBundle_administrador_educacion_estudiantenf:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/estudiantenf.yml"
+    prefix:   /administrador/educacion/estudiantenf
+    
+FundeuisEducacionBundle_administrador_configuracion_programaacademico:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/programaacademico.yml"
+    prefix:   /administrador/configuracion/programaacademico
+
 #FundeuisEducacionBundle_administrador_configuracion_administrador:
 #    resource: "@FundeuisEducacionBundle/Resources/config/routing/conocimiento.yml"
 #    prefix:   /administrador/configuracion/administrador

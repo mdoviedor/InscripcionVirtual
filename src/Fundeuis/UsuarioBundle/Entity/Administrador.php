@@ -88,8 +88,8 @@ class Administrador
      * })
      */
     private $user;
-
-
+    
+   
 
     /**
      * Get idadministrador
@@ -283,5 +283,15 @@ class Administrador
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Get idadministrador
+     *
+     * @return integer 
+     */
+    public function getIdadministrador()
+    {
+        return $this->idadministrador;
     }
 }

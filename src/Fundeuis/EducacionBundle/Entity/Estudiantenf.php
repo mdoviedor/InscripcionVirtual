@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Estudiantenf
  *
  * @ORM\Table(name="estudiantenf", indexes={@ORM\Index(name="u_estudianteenf_idx", columns={"user"}), @ORM\Index(name="u_rol_idx", columns={"rol"}), @ORM\Index(name="autor_estudiantenf_idx", columns={"autor"}), @ORM\Index(name="p_estudiantenf_idx", columns={"programaAcademico"}), @ORM\Index(name="tdi_estudiantenf_idx", columns={"tipoDocumentoIdentidad"}), @ORM\Index(name="c_estudiantenf_idx", columns={"ciudad"}), @ORM\Index(name="co_estudiantenf_idx", columns={"conocimiento"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fundeuis\EducacionBundle\Entity\EstudiantenfRepository")
  */
-class Estudiantenf
-{
+class Estudiantenf {
+
     /**
      * @var integer
      *
@@ -175,15 +175,12 @@ class Estudiantenf
      */
     private $conocimiento;
 
-
-
     /**
      * Get idusuario
      *
      * @return integer 
      */
-    public function getIdusuario()
-    {
+    public function getId() {
         return $this->idusuario;
     }
 
@@ -193,8 +190,7 @@ class Estudiantenf
      * @param string $documentoidentidad
      * @return Estudiantenf
      */
-    public function setDocumentoidentidad($documentoidentidad)
-    {
+    public function setDocumentoidentidad($documentoidentidad) {
         $this->documentoidentidad = $documentoidentidad;
 
         return $this;
@@ -205,8 +201,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getDocumentoidentidad()
-    {
+    public function getDocumentoidentidad() {
         return $this->documentoidentidad;
     }
 
@@ -216,8 +211,7 @@ class Estudiantenf
      * @param string $nombres
      * @return Estudiantenf
      */
-    public function setNombres($nombres)
-    {
+    public function setNombres($nombres) {
         $this->nombres = $nombres;
 
         return $this;
@@ -228,8 +222,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getNombres()
-    {
+    public function getNombres() {
         return $this->nombres;
     }
 
@@ -239,8 +232,7 @@ class Estudiantenf
      * @param string $apellidos
      * @return Estudiantenf
      */
-    public function setApellidos($apellidos)
-    {
+    public function setApellidos($apellidos) {
         $this->apellidos = $apellidos;
 
         return $this;
@@ -251,8 +243,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getApellidos()
-    {
+    public function getApellidos() {
         return $this->apellidos;
     }
 
@@ -262,8 +253,7 @@ class Estudiantenf
      * @param string $edad
      * @return Estudiantenf
      */
-    public function setEdad($edad)
-    {
+    public function setEdad($edad) {
         $this->edad = $edad;
 
         return $this;
@@ -274,8 +264,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getEdad()
-    {
+    public function getEdad() {
         return $this->edad;
     }
 
@@ -285,8 +274,7 @@ class Estudiantenf
      * @param string $telefono
      * @return Estudiantenf
      */
-    public function setTelefono($telefono)
-    {
+    public function setTelefono($telefono) {
         $this->telefono = $telefono;
 
         return $this;
@@ -297,8 +285,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getTelefono()
-    {
+    public function getTelefono() {
         return $this->telefono;
     }
 
@@ -308,8 +295,7 @@ class Estudiantenf
      * @param string $celular
      * @return Estudiantenf
      */
-    public function setCelular($celular)
-    {
+    public function setCelular($celular) {
         $this->celular = $celular;
 
         return $this;
@@ -320,8 +306,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getCelular()
-    {
+    public function getCelular() {
         return $this->celular;
     }
 
@@ -331,8 +316,7 @@ class Estudiantenf
      * @param string $estrato
      * @return Estudiantenf
      */
-    public function setEstrato($estrato)
-    {
+    public function setEstrato($estrato) {
         $this->estrato = $estrato;
 
         return $this;
@@ -343,8 +327,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getEstrato()
-    {
+    public function getEstrato() {
         return $this->estrato;
     }
 
@@ -354,8 +337,7 @@ class Estudiantenf
      * @param string $universidad
      * @return Estudiantenf
      */
-    public function setUniversidad($universidad)
-    {
+    public function setUniversidad($universidad) {
         $this->universidad = $universidad;
 
         return $this;
@@ -366,8 +348,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getUniversidad()
-    {
+    public function getUniversidad() {
         return $this->universidad;
     }
 
@@ -377,8 +358,7 @@ class Estudiantenf
      * @param string $colegio
      * @return Estudiantenf
      */
-    public function setColegio($colegio)
-    {
+    public function setColegio($colegio) {
         $this->colegio = $colegio;
 
         return $this;
@@ -389,8 +369,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getColegio()
-    {
+    public function getColegio() {
         return $this->colegio;
     }
 
@@ -400,8 +379,7 @@ class Estudiantenf
      * @param string $nombresacudiente
      * @return Estudiantenf
      */
-    public function setNombresacudiente($nombresacudiente)
-    {
+    public function setNombresacudiente($nombresacudiente) {
         $this->nombresacudiente = $nombresacudiente;
 
         return $this;
@@ -412,8 +390,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getNombresacudiente()
-    {
+    public function getNombresacudiente() {
         return $this->nombresacudiente;
     }
 
@@ -423,8 +400,7 @@ class Estudiantenf
      * @param string $apellidosacudiente
      * @return Estudiantenf
      */
-    public function setApellidosacudiente($apellidosacudiente)
-    {
+    public function setApellidosacudiente($apellidosacudiente) {
         $this->apellidosacudiente = $apellidosacudiente;
 
         return $this;
@@ -435,8 +411,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getApellidosacudiente()
-    {
+    public function getApellidosacudiente() {
         return $this->apellidosacudiente;
     }
 
@@ -446,8 +421,7 @@ class Estudiantenf
      * @param string $telefonoacudiente
      * @return Estudiantenf
      */
-    public function setTelefonoacudiente($telefonoacudiente)
-    {
+    public function setTelefonoacudiente($telefonoacudiente) {
         $this->telefonoacudiente = $telefonoacudiente;
 
         return $this;
@@ -458,8 +432,7 @@ class Estudiantenf
      *
      * @return string 
      */
-    public function getTelefonoacudiente()
-    {
+    public function getTelefonoacudiente() {
         return $this->telefonoacudiente;
     }
 
@@ -469,8 +442,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\User $user
      * @return Estudiantenf
      */
-    public function setUser(\Fundeuis\EducacionBundle\Entity\User $user = null)
-    {
+    public function setUser(\Fundeuis\EducacionBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -481,8 +453,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -492,8 +463,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Rol $rol
      * @return Estudiantenf
      */
-    public function setRol(\Fundeuis\EducacionBundle\Entity\Rol $rol = null)
-    {
+    public function setRol(\Fundeuis\EducacionBundle\Entity\Rol $rol = null) {
         $this->rol = $rol;
 
         return $this;
@@ -504,8 +474,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Rol 
      */
-    public function getRol()
-    {
+    public function getRol() {
         return $this->rol;
     }
 
@@ -515,8 +484,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Administrador $autor
      * @return Estudiantenf
      */
-    public function setAutor(\Fundeuis\EducacionBundle\Entity\Administrador $autor = null)
-    {
+    public function setAutor(\Fundeuis\EducacionBundle\Entity\Administrador $autor = null) {
         $this->autor = $autor;
 
         return $this;
@@ -527,8 +495,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Administrador 
      */
-    public function getAutor()
-    {
+    public function getAutor() {
         return $this->autor;
     }
 
@@ -538,8 +505,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Programaacademico $programaacademico
      * @return Estudiantenf
      */
-    public function setProgramaacademico(\Fundeuis\EducacionBundle\Entity\Programaacademico $programaacademico = null)
-    {
+    public function setProgramaacademico(\Fundeuis\EducacionBundle\Entity\Programaacademico $programaacademico = null) {
         $this->programaacademico = $programaacademico;
 
         return $this;
@@ -550,8 +516,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Programaacademico 
      */
-    public function getProgramaacademico()
-    {
+    public function getProgramaacademico() {
         return $this->programaacademico;
     }
 
@@ -561,8 +526,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad
      * @return Estudiantenf
      */
-    public function setTipodocumentoidentidad(\Fundeuis\EducacionBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad = null)
-    {
+    public function setTipodocumentoidentidad(\Fundeuis\EducacionBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad = null) {
         $this->tipodocumentoidentidad = $tipodocumentoidentidad;
 
         return $this;
@@ -573,8 +537,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Tipodocumentoidentidad 
      */
-    public function getTipodocumentoidentidad()
-    {
+    public function getTipodocumentoidentidad() {
         return $this->tipodocumentoidentidad;
     }
 
@@ -584,8 +547,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Ciudad $ciudad
      * @return Estudiantenf
      */
-    public function setCiudad(\Fundeuis\EducacionBundle\Entity\Ciudad $ciudad = null)
-    {
+    public function setCiudad(\Fundeuis\EducacionBundle\Entity\Ciudad $ciudad = null) {
         $this->ciudad = $ciudad;
 
         return $this;
@@ -596,8 +558,7 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Ciudad 
      */
-    public function getCiudad()
-    {
+    public function getCiudad() {
         return $this->ciudad;
     }
 
@@ -607,8 +568,7 @@ class Estudiantenf
      * @param \Fundeuis\EducacionBundle\Entity\Conocimiento $conocimiento
      * @return Estudiantenf
      */
-    public function setConocimiento(\Fundeuis\EducacionBundle\Entity\Conocimiento $conocimiento = null)
-    {
+    public function setConocimiento(\Fundeuis\EducacionBundle\Entity\Conocimiento $conocimiento = null) {
         $this->conocimiento = $conocimiento;
 
         return $this;
@@ -619,8 +579,17 @@ class Estudiantenf
      *
      * @return \Fundeuis\EducacionBundle\Entity\Conocimiento 
      */
-    public function getConocimiento()
-    {
+    public function getConocimiento() {
         return $this->conocimiento;
     }
+
+    /**
+     * Get idusuario
+     *
+     * @return integer 
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
 }

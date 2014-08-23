@@ -1,0 +1,30 @@
+administrador_educacion_estudiantenf:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:index" }
+
+administrador_educacion_estudiantenf_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:show" }
+
+administrador_educacion_estudiantenf_new:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:new" }
+
+administrador_educacion_estudiantenf_create:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:create" }
+    requirements: { _method: post }
+
+administrador_educacion_estudiantenf_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:edit" }
+
+administrador_educacion_estudiantenf_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:update" }
+    requirements: { _method: post|put }
+
+administrador_educacion_estudiantenf_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:delete" }
+    requirements: { _method: post|delete }

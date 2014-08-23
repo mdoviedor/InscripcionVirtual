@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tipoDocumentoIdentidad")
  * @ORM\Entity
  */
-class Tipodocumentoidentidad
-{
+class Tipodocumentoidentidad {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class Tipodocumentoidentidad
      */
     private $nombre;
 
-
-
     /**
      * Get idtipodocumentoidentidad
      *
      * @return integer 
      */
-    public function getIdtipodocumentoidentidad()
-    {
+    public function getIdtipodocumentoidentidad() {
         return $this->idtipodocumentoidentidad;
     }
 
@@ -46,8 +43,7 @@ class Tipodocumentoidentidad
      * @param string $nombre
      * @return Tipodocumentoidentidad
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -58,8 +54,12 @@ class Tipodocumentoidentidad
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
+
+    public function __toString() {
+        return $this->nombre;
+    }
+
 }

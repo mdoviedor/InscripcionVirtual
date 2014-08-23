@@ -98,7 +98,7 @@ class AdministradorController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Administrador $entity) {
-        $form = $this->createForm(new AdministradorType(), $entity, array(
+        $form = $this->createForm(new AdministradorType(null), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_administrador_create'),
             'method' => 'POST',
         ));
@@ -128,8 +128,11 @@ class AdministradorController extends Controller {
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
+        $entity = new Administrador();
+        $autor = new Administrador();
 
         $entity = $em->getRepository('FundeuisUsuarioBundle:Administrador')->find($id);
+        $autor = $em->getRepository('FundeuisUsuarioBundle:Administrador')->findOneBy(array('documentoidentidad' => $entity->getAutor()->getUsername()));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Administrador entity.');
@@ -138,6 +141,7 @@ class AdministradorController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FundeuisUsuarioBundle:Administrador:show.html.twig', array(
+                    'autor' => $autor,
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -174,12 +178,13 @@ class AdministradorController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(Administrador $entity) {
-        $form = $this->createForm(new AdministradorType(), $entity, array(
+
+        $form = $this->createForm(new AdministradorType($entity->getUser()->getEmail()), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_administrador_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => "btn btn-success btn-lg")));
 
         return $form;
     }
@@ -191,7 +196,22 @@ class AdministradorController extends Controller {
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
+        $rol = new Rol();
+        $user = new User();
+        $autor = new User();
+        $userManager = $this->get('fos_user.user_manager'); // Instancia del manejador del bundle FOSUser
+        
+        /*
+         * Obtener username de la sesion para determinar el autor
+         */
+        $userManagerAutor = $this->get('security.context')->getToken()->getUser();
+        $a = $userManagerAutor->getUsername();
+        /*
+         *
+         */
+
         $entity = $em->getRepository('FundeuisUsuarioBundle:Administrador')->find($id);
+        $user = $em->getRepository('FundeuisUserBundle:User')->find($entity->getUser()->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Administrador entity.');
@@ -202,6 +222,25 @@ class AdministradorController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            $email = $editForm->get('correoElectronico')->getData();
+            $username = $editForm->get('documentoidentidad')->getData();
+            $r = $editForm->get('rol')->getData();
+            $rol = $em->getRepository(self::RUTAROL)->find($r);
+
+            $user->setEmail($email);
+            $user->setUsername($username);
+            //$user->setPlainPassword($username);
+            $user->r($rol->getNombre());
+
+            $userManager->updateUser($user); //Actualizacion del contenido del manejador
+            $this->getDoctrine()->getManager()->flush();
+
+            $user = $em->getRepository(self::RUTAUSER)->findOneBy(array('username' => $username));
+            $autor = $em->getRepository(self::RUTAUSER)->findOneBy(array('username' => $a));
+            $entity->setUser($user);
+            $entity->setAutor($autor);
+            
             $em->flush();
 
             return $this->redirect($this->generateUrl('administrador_configuracion_administrador_edit', array('id' => $id)));
@@ -248,7 +287,7 @@ class AdministradorController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('administrador_configuracion_administrador_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => "btn btn-danger btn-lg")))
                         ->getForm()
         ;
     }

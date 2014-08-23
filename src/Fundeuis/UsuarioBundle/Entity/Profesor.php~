@@ -104,4 +104,244 @@ class Profesor
     private $autor;
 
 
+
+    /**
+     * Get idprofesor
+     *
+     * @return integer 
+     */
+    public function getIdprofesor()
+    {
+        return $this->idprofesor;
+    }
+
+    /**
+     * Set documentoidentidad
+     *
+     * @param string $documentoidentidad
+     * @return Profesor
+     */
+    public function setDocumentoidentidad($documentoidentidad)
+    {
+        $this->documentoidentidad = $documentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get documentoidentidad
+     *
+     * @return string 
+     */
+    public function getDocumentoidentidad()
+    {
+        return $this->documentoidentidad;
+    }
+
+    /**
+     * Set nombres
+     *
+     * @param string $nombres
+     * @return Profesor
+     */
+    public function setNombres($nombres)
+    {
+        $this->nombres = $nombres;
+
+        return $this;
+    }
+
+    /**
+     * Get nombres
+     *
+     * @return string 
+     */
+    public function getNombres()
+    {
+        return $this->nombres;
+    }
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     * @return Profesor
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string 
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set fecharegistro
+     *
+     * @param \DateTime $fecharegistro
+     * @return Profesor
+     */
+    public function setFecharegistro($fecharegistro)
+    {
+        $this->fecharegistro = $fecharegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get fecharegistro
+     *
+     * @return \DateTime 
+     */
+    public function getFecharegistro()
+    {
+        return $this->fecharegistro;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Profesor
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set celular
+     *
+     * @param string $celular
+     * @return Profesor
+     */
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+
+        return $this;
+    }
+
+    /**
+     * Get celular
+     *
+     * @return string 
+     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
+
+    /**
+     * Set rol
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Rol $rol
+     * @return Profesor
+     */
+    public function setRol(\Fundeuis\UsuarioBundle\Entity\Rol $rol = null)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Rol 
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set tipodocumentoidentidad
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad
+     * @return Profesor
+     */
+    public function setTipodocumentoidentidad(\Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad $tipodocumentoidentidad = null)
+    {
+        $this->tipodocumentoidentidad = $tipodocumentoidentidad;
+
+        return $this;
+    }
+
+    /**
+     * Get tipodocumentoidentidad
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad 
+     */
+    public function getTipodocumentoidentidad()
+    {
+        return $this->tipodocumentoidentidad;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\User $user
+     * @return Profesor
+     */
+    public function setUser(\Fundeuis\UsuarioBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set autor
+     *
+     * @param \Fundeuis\UsuarioBundle\Entity\Administrador $autor
+     * @return Profesor
+     */
+    public function setAutor(\Fundeuis\UsuarioBundle\Entity\Administrador $autor = null)
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
+    /**
+     * Get autor
+     *
+     * @return \Fundeuis\UsuarioBundle\Entity\Administrador 
+     */
+    public function getAutor()
+    {
+        return $this->autor;
+    }
 }

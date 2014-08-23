@@ -4,7 +4,6 @@ namespace Fundeuis\EducacionBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Fundeuis\EducacionBundle\Entity\Nombrecurso;
 use Fundeuis\EducacionBundle\Form\NombrecursoType;
 
@@ -12,29 +11,27 @@ use Fundeuis\EducacionBundle\Form\NombrecursoType;
  * Nombrecurso controller.
  *
  */
-class NombrecursoController extends Controller
-{
+class NombrecursoController extends Controller {
 
     /**
      * Lists all Nombrecurso entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FundeuisEducacionBundle:Nombrecurso')->findAll();
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Nombrecurso entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Nombrecurso();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -48,8 +45,8 @@ class NombrecursoController extends Controller
         }
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,8 +57,7 @@ class NombrecursoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Nombrecurso $entity)
-    {
+    private function createCreateForm(Nombrecurso $entity) {
         $form = $this->createForm(new NombrecursoType(), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_nombrecurso_create'),
             'method' => 'POST',
@@ -76,14 +72,13 @@ class NombrecursoController extends Controller
      * Displays a form to create a new Nombrecurso entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Nombrecurso();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +86,7 @@ class NombrecursoController extends Controller
      * Finds and displays a Nombrecurso entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisEducacionBundle:Nombrecurso')->find($id);
@@ -104,8 +98,8 @@ class NombrecursoController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +107,7 @@ class NombrecursoController extends Controller
      * Displays a form to edit an existing Nombrecurso entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisEducacionBundle:Nombrecurso')->find($id);
@@ -127,21 +120,20 @@ class NombrecursoController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Nombrecurso entity.
-    *
-    * @param Nombrecurso $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Nombrecurso $entity)
-    {
+     * Creates a form to edit a Nombrecurso entity.
+     *
+     * @param Nombrecurso $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Nombrecurso $entity) {
         $form = $this->createForm(new NombrecursoType(), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_nombrecurso_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +143,12 @@ class NombrecursoController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Nombrecurso entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisEducacionBundle:Nombrecurso')->find($id);
@@ -176,17 +168,17 @@ class NombrecursoController extends Controller
         }
 
         return $this->render('FundeuisEducacionBundle:Nombrecurso:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Nombrecurso entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +204,13 @@ class NombrecursoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('administrador_configuracion_nombrecurso_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('administrador_configuracion_nombrecurso_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => "btn btn-danger btn-lg", 'onClick' => 'return ConfirmarAccion();')))
+                        ->getForm()
         ;
     }
+
 }

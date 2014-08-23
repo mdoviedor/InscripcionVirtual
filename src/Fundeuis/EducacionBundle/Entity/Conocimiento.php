@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="conocimiento")
  * @ORM\Entity
  */
-class Conocimiento
-{
+class Conocimiento {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class Conocimiento
      */
     private $descripcion;
 
-
-
     /**
      * Get idconocimiento
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->idconocimiento;
     }
 
@@ -46,8 +43,7 @@ class Conocimiento
      * @param string $descripcion
      * @return Conocimiento
      */
-    public function setDescripcion($descripcion)
-    {
+    public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
 
         return $this;
@@ -58,8 +54,22 @@ class Conocimiento
      *
      * @return string 
      */
-    public function getDescripcion()
-    {
+    public function getDescripcion() {
         return $this->descripcion;
+    }
+
+    public function __toString() {
+        return $this->descripcion;
+    }
+
+
+    /**
+     * Get idconocimiento
+     *
+     * @return integer 
+     */
+    public function getIdconocimiento()
+    {
+        return $this->idconocimiento;
     }
 }
