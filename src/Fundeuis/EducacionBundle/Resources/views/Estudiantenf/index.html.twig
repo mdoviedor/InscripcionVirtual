@@ -10,7 +10,7 @@
 {% block contenido -%}   
 
 
-    <table class="table tab-content table-hover table-striped records_list">
+    <table class="table tab-content table-condensed table-hover table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -42,7 +42,7 @@
                                 <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">edit</a>
                             </li>
                             <li>
-                                <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">matricular</a>
+                                <a href="{{ path('administrador_educacion_usuariocurso_new', { 'id': entity.id }) }}">matricular</a>
                             </li>
                         </ul>
                     </td>

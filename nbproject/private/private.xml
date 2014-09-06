@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Resources/config/routing.yml</file>
-            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Form/EstudiantenfType.php</file>
+            <file>file:/var/www/html/InscripcionVirtual/app/Resources/views/estudiantenf.html.twig</file>
+            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Resources/views/Estudiantenf/inicioPreinscripcion.html.twig</file>
+            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Controller/UsuarioCursoController.php</file>
             <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Controller/EstudiantenfController.php</file>
-            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Entity/Programaacademico.php</file>
+            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Resources/views/Estudiantenf/informacionPreinscripcion.html.twig</file>
+            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Controller/ComunidadController.php</file>
+            <file>file:/var/www/html/InscripcionVirtual/src/Fundeuis/EducacionBundle/Resources/views/Estudiantenf/show.html.twig</file>
         </group>
     </open-files>
 </project-private>

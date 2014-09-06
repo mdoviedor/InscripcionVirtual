@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Curso
  *
  * @ORM\Table(name="curso", indexes={@ORM\Index(name="a_curso_idx", columns={"autor"}), @ORM\Index(name="n_curso_idx", columns={"nombreCurso"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fundeuis\EducacionBundle\Entity\CursoRepository")
  */
-class Curso
-{
+class Curso {
+
     /**
      * @var integer
      *
@@ -104,15 +104,12 @@ class Curso
      */
     private $nombrecurso;
 
-
-
     /**
      * Get idcurso
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->idcurso;
     }
 
@@ -122,8 +119,7 @@ class Curso
      * @param \DateTime $fechainicio
      * @return Curso
      */
-    public function setFechainicio($fechainicio)
-    {
+    public function setFechainicio($fechainicio) {
         $this->fechainicio = $fechainicio;
 
         return $this;
@@ -134,8 +130,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getFechainicio()
-    {
+    public function getFechainicio() {
         return $this->fechainicio;
     }
 
@@ -145,8 +140,7 @@ class Curso
      * @param \DateTime $fechafin
      * @return Curso
      */
-    public function setFechafin($fechafin)
-    {
+    public function setFechafin($fechafin) {
         $this->fechafin = $fechafin;
 
         return $this;
@@ -157,8 +151,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getFechafin()
-    {
+    public function getFechafin() {
         return $this->fechafin;
     }
 
@@ -168,8 +161,7 @@ class Curso
      * @param string $duracion
      * @return Curso
      */
-    public function setDuracion($duracion)
-    {
+    public function setDuracion($duracion) {
         $this->duracion = $duracion;
 
         return $this;
@@ -180,8 +172,7 @@ class Curso
      *
      * @return string 
      */
-    public function getDuracion()
-    {
+    public function getDuracion() {
         return $this->duracion;
     }
 
@@ -191,8 +182,7 @@ class Curso
      * @param \DateTime $horainiciomanana
      * @return Curso
      */
-    public function setHorainiciomanana($horainiciomanana)
-    {
+    public function setHorainiciomanana($horainiciomanana) {
         $this->horainiciomanana = $horainiciomanana;
 
         return $this;
@@ -203,8 +193,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getHorainiciomanana()
-    {
+    public function getHorainiciomanana() {
         return $this->horainiciomanana;
     }
 
@@ -214,8 +203,7 @@ class Curso
      * @param \DateTime $horafinmanana
      * @return Curso
      */
-    public function setHorafinmanana($horafinmanana)
-    {
+    public function setHorafinmanana($horafinmanana) {
         $this->horafinmanana = $horafinmanana;
 
         return $this;
@@ -226,8 +214,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getHorafinmanana()
-    {
+    public function getHorafinmanana() {
         return $this->horafinmanana;
     }
 
@@ -237,8 +224,7 @@ class Curso
      * @param \DateTime $horainiciotarde
      * @return Curso
      */
-    public function setHorainiciotarde($horainiciotarde)
-    {
+    public function setHorainiciotarde($horainiciotarde) {
         $this->horainiciotarde = $horainiciotarde;
 
         return $this;
@@ -249,8 +235,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getHorainiciotarde()
-    {
+    public function getHorainiciotarde() {
         return $this->horainiciotarde;
     }
 
@@ -260,8 +245,7 @@ class Curso
      * @param \DateTime $horafintarde
      * @return Curso
      */
-    public function setHorafintarde($horafintarde)
-    {
+    public function setHorafintarde($horafintarde) {
         $this->horafintarde = $horafintarde;
 
         return $this;
@@ -272,8 +256,7 @@ class Curso
      *
      * @return \DateTime 
      */
-    public function getHorafintarde()
-    {
+    public function getHorafintarde() {
         return $this->horafintarde;
     }
 
@@ -283,8 +266,7 @@ class Curso
      * @param string $intensidadhoraria
      * @return Curso
      */
-    public function setIntensidadhoraria($intensidadhoraria)
-    {
+    public function setIntensidadhoraria($intensidadhoraria) {
         $this->intensidadhoraria = $intensidadhoraria;
 
         return $this;
@@ -295,8 +277,7 @@ class Curso
      *
      * @return string 
      */
-    public function getIntensidadhoraria()
-    {
+    public function getIntensidadhoraria() {
         return $this->intensidadhoraria;
     }
 
@@ -306,8 +287,7 @@ class Curso
      * @param string $descripcion
      * @return Curso
      */
-    public function setDescripcion($descripcion)
-    {
+    public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
 
         return $this;
@@ -318,8 +298,7 @@ class Curso
      *
      * @return string 
      */
-    public function getDescripcion()
-    {
+    public function getDescripcion() {
         return $this->descripcion;
     }
 
@@ -329,8 +308,7 @@ class Curso
      * @param \Fundeuis\EducacionBundle\Entity\Administrador $autor
      * @return Curso
      */
-    public function setAutor(\Fundeuis\EducacionBundle\Entity\Administrador $autor = null)
-    {
+    public function setAutor(\Fundeuis\EducacionBundle\Entity\Administrador $autor = null) {
         $this->autor = $autor;
 
         return $this;
@@ -341,8 +319,7 @@ class Curso
      *
      * @return \Fundeuis\EducacionBundle\Entity\Administrador 
      */
-    public function getAutor()
-    {
+    public function getAutor() {
         return $this->autor;
     }
 
@@ -352,8 +329,7 @@ class Curso
      * @param \Fundeuis\EducacionBundle\Entity\Nombrecurso $nombrecurso
      * @return Curso
      */
-    public function setNombrecurso(\Fundeuis\EducacionBundle\Entity\Nombrecurso $nombrecurso = null)
-    {
+    public function setNombrecurso(\Fundeuis\EducacionBundle\Entity\Nombrecurso $nombrecurso = null) {
         $this->nombrecurso = $nombrecurso;
 
         return $this;
@@ -364,8 +340,7 @@ class Curso
      *
      * @return \Fundeuis\EducacionBundle\Entity\Nombrecurso 
      */
-    public function getNombrecurso()
-    {
+    public function getNombrecurso() {
         return $this->nombrecurso;
     }
 
@@ -374,8 +349,12 @@ class Curso
      *
      * @return integer 
      */
-    public function getIdcurso()
-    {
+    public function getIdcurso() {
         return $this->idcurso;
     }
+
+    public function __toString() {
+        return $this->nombrecurso->getNombre() . ' ' . $this->fechainicio;
+    }
+
 }

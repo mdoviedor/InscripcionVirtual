@@ -1,16 +1,23 @@
-{% extends '::base.html.twig' %}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+       <h1>Rol edit</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
 
-{% block body -%}
-    <h1>Rol edit</h1>
+{% block contenido -%}   
+
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('administrador_configuracion_rol') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_configuracion_rol') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

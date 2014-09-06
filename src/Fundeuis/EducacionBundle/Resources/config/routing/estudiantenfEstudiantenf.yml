@@ -1,0 +1,17 @@
+estudiantenf_educacion_estudiantenf_newPreinscripcion:
+    path:     /new
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:newPreinscripcion" }
+
+estudiantenf_educacion_estudiantenf_createPreinscripcion:
+    path:     /create
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:createPreinscripcion" }
+    requirements: { _method: post }
+    
+estudiantenf_educacion_estudiantenf_inicioPreinscripcion:
+    path:     /inicio
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:inicioPreinscripcion" }
+    
+estudiantenf_educacion_estudiantenf_informacionPreinscripcion:
+    path:     /informacion
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:informacionPreinscripcion" }
+   

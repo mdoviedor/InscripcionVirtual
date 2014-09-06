@@ -1,6 +1,6 @@
-{% extends "::superadministrador.html.twig" %}
+{% extends "::estudiantenf.html.twig" %}
 {% block titulo %}
-    <h1>Estudiantenf</h1>
+    <h1>Información</h1>
 {% endblock %}
 {% block submenuizquierdo %}
 {% endblock %}
@@ -9,84 +9,79 @@
 
 {% block contenido -%}   
 
-
     <table class="table tab-content table-hover table-striped record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
                 <th>Documentoidentidad</th>
-                <td>{{ entity.documentoidentidad }}</td>
+                <td>{{ estudiantenf.documentoidentidad }}</td>
             </tr>
             <tr>
                 <th>Tipodocumentoidentidad</th>
-                <td>{{ entity.tipodocumentoidentidad }}</td>
+                <td>{{ estudiantenf.tipodocumentoidentidad }}</td>
             </tr>
             <tr>
                 <th>Nombres</th>
-                <td>{{ entity.nombres }}</td>
+                <td>{{ estudiantenf.nombres }}</td>
             </tr>
             <tr>
                 <th>Apellidos</th>
-                <td>{{ entity.apellidos }}</td>
+                <td>{{ estudiantenf.apellidos }}</td>
             </tr>
             <tr>
                 <th>Edad</th>
-                <td>{{ entity.edad }}</td>
+                <td>{{ estudiantenf.edad }}</td>
             </tr>
             <tr>
                 <th>Telefono</th>
-                <td>{{ entity.telefono }}</td>
+                <td>{{ estudiantenf.telefono }}</td>
             </tr>
             <tr>
                 <th>Celular</th>
-                <td>{{ entity.celular }}</td>
+                <td>{{ estudiantenf.celular }}</td>
             </tr>
             <tr>
                 <th>Ciudad de residencia</th>
-                <td>{{ entity.ciudad.nombre }}</td>
+                <td>{{ estudiantenf.ciudad.nombre }}</td>
             </tr>
             <tr>
                 <th>Departamento de residencia</th>
-                <td>{{ entity.ciudad.departamento.nombre }}</td>
+                <td>{{ estudiantenf.ciudad.departamento.nombre }}</td>
             </tr>
             <tr>
                 <th>Estrato</th>
-                <td>{{ entity.estrato }}</td>
+                <td>{{ estudiantenf.estrato }}</td>
             </tr>
             <tr>
                 <th>Universidad</th>
-                <td>{{ entity.universidad }}</td>
+                <td>{{ estudiantenf.universidad }}</td>
             </tr>
             <tr>
                 <th>Programaacademico</th>
-                <td>{{ entity.programaacademico }}</td>
+                <td>{{ estudiantenf.programaacademico }}</td>
             </tr>
             <tr>
                 <th>Colegio</th>
-                <td>{{ entity.colegio }}</td>
+                <td>{{ estudiantenf.colegio }}</td>
             </tr>
             <tr>
                 <th>¿Cómo nos conocio?</th>
-                <td>{{ entity.conocimiento }}</td>
+                <td>{{ estudiantenf.conocimiento }}</td>
             </tr>
             <tr>
                 <th>Nombresacudiente</th>
-                <td>{{ entity.nombresacudiente }}</td>
+                <td>{{ estudiantenf.nombresacudiente }}</td>
             </tr>
             <tr>
                 <th>Apellidosacudiente</th>
-                <td>{{ entity.apellidosacudiente }}</td>
+                <td>{{ estudiantenf.apellidosacudiente }}</td>
             </tr>
             <tr>
                 <th>Telefonoacudiente</th>
-                <td>{{ entity.telefonoacudiente }}</td>
+                <td>{{ estudiantenf.telefonoacudiente }}</td>
             </tr>
             <tr>
                 <th>Autor</th>
-                <td>{{ entity.autor.nombres }} {{ entity.autor.apellidos }}</td>
+                <td>{{ estudiantenf.autor.nombres }} {{ estudiantenf.autor.apellidos }}</td>
             </tr>
         </tbody>
     </table>
@@ -94,8 +89,7 @@
     <h3>Cursos Matriculados</h3>
     <table class="table tab-content table-hover table-striped records_list">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr>              
                 <th>Fechainicio</th>
                 <th>Fechafin</th>
                 <th>Duracion</th>
@@ -103,14 +97,12 @@
                 <th>Horariotarde</th>    
                 <th>Intensidadhoraria</th>
                 <th>Descripcion</th>
-                <th>Nombre curso</th>
-                <th>Actions</th>
+                <th>Nombre curso</th>          
             </tr>
         </thead>
         <tbody>
             {% for entity in usuarioCurso %}
-                <tr>
-                    <td><a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">{{ entity.curso.id }}</a></td>
+                <tr>                    
                     <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
                     <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
                     <td>{{ entity.curso.duracion }}</td>
@@ -118,40 +110,11 @@
                     <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
                     <td>{{ entity.curso.intensidadhoraria }}</td>
                     <td>{{ entity.curso.descripcion }}</td>
-                    <td>{{ entity.curso.nombrecurso.nombre }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_curso_edit', { 'id': entity.curso.id }) }}">edit</a>
-                            </li>
-                            <li>
-                             
-                                <a href="{{ path('administrador_educacion_usuariocurso_delete', { 'id': entity.id }) }}">
-                                    Eliminar Matricula
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
+                    <td>{{ entity.curso.nombrecurso.nombre }}</td>               
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('administrador_educacion_estudiantenf') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
 {% endblock %}
 

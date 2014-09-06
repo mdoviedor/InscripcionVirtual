@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UsuarioCurso
  *
  * @ORM\Table(name="usuario_curso", indexes={@ORM\Index(name="fk_usuario_curso_1_idx", columns={"curso"}), @ORM\Index(name="fk_usuario_curso_2_idx", columns={"estudiantenf"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fundeuis\EducacionBundle\Entity\UsuarioCursoRepository")
  */
 class UsuarioCurso
 {
@@ -62,7 +62,7 @@ class UsuarioCurso
      *
      * @return integer 
      */
-    public function getIdusuarioCurso()
+    public function getId()
     {
         return $this->idusuarioCurso;
     }
@@ -157,5 +157,15 @@ class UsuarioCurso
     public function getEstudiantenf()
     {
         return $this->estudiantenf;
+    }
+
+    /**
+     * Get idusuarioCurso
+     *
+     * @return integer 
+     */
+    public function getIdusuarioCurso()
+    {
+        return $this->idusuarioCurso;
     }
 }

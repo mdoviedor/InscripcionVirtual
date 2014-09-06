@@ -19,42 +19,8 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href=""><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Educación NF<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{path('administrador_educacion_curso')}}">Cursos</a></li>                     
-                            <li><a href="{{path('administrador_educacion_estudiantenf')}}">Estudiantes</a></li>
-
-
-                            {# <li><a href="{{ path('gs_proyectos_recursos_buscar') }}">Gestor de Recursos</a></li>#}
-                        </ul>
-                    </li>              
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestor de Atributos<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{path('administrador_configuracion_nombrecurso')}}">Nombre de Cursos</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('administrador_configuracion_rol')}}">Roles</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('administrador_configuracion_tipodocumentoidentidad')}}">Documento de Identidad</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('administrador_configuracion_conocimiento')}}">Conocimiento de cursos</a></li>
-                            <li class="divider"></li>
-                                {# <li><a href="{{ path('gs_proyectos_recursos_buscar') }}">Gestor de Recursos</a></li>#}
-                        </ul>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones<b class="caret"></b></a>
-                        <ul class="dropdown-menu">                   
-                            <li><a href="">Reportes</a></li>
-                            <li class="divider"></li>
-                            <li><a href="">Ayuda</a></li>
-                            <li class="divider"></li>
-                            <li><a href="">Salir</a></li>                       
-
-                        </ul>
-                    </li>
+                    <li><a href="{{path('estudiantenf_educacion_estudiantenf_inicioPreinscripcion')}}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li> 
+                    <li class="active"><a href="{{path('estudiantenf_educacion_estudiantenf_informacionPreinscripcion')}}">Mi Información</a></li>   
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -108,15 +74,18 @@
             {% endfor %}
         {% endblock %}
 
-        {% block contenido %}
-        {% endblock %}
-
         <div class="row">
-            <div class="col-xs-6 col-md-4" style="border-color: #000;">
+            <div class="col-xs-18 col-md-12">
+                {% block contenido %}
+                {% endblock %}
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-xs-9 col-md-6">
                 {% block mitadizquierdo %}
                 {% endblock %}
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-8" style="text-align: right;">
+            <div class="col-xs-9 col-md-6">
                 {% block mitadderecho %}
                 {% endblock %}
             </div>

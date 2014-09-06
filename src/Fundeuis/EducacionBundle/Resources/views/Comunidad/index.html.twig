@@ -1,0 +1,10 @@
+{% extends "::comunidad.html.twig" %}
+{% block contenido %}
+    <div style="max-width: 400px;; background-color: #F8F8F8; padding: 40px 40px 40px 40px;" class="center-block">
+        <h3>Iniciar Sesión</h3>
+        {{ render(url('fos_user_security_login')) }}
+    </div>
+{% endblock %}
+{% block mitadizquierdo %}
+
+{% endblock %}

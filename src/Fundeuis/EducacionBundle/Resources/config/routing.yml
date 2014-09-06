@@ -1,6 +1,15 @@
 fundeuis_educacion_homepage:
     path:     /hello/{name}
     defaults: { _controller: FundeuisEducacionBundle:Default:index }
+    
+Fundeuis_index:
+    path:     /
+    defaults: { _controller: FundeuisEducacionBundle:Comunidad:index }
+
+Fundeuis_recuperarContrasena:
+    path:     /recuperarContrasena/
+    defaults: { _controller: FundeuisEducacionBundle:Comunidad:recuperarcontrasena }
+
 
 FundeuisEducacionBundle_administrador_configuracion_rol:
     resource: "@FundeuisEducacionBundle/Resources/config/routing/rol.yml"
@@ -22,9 +31,20 @@ FundeuisEducacionBundle_administrador_educacion_estudiantenf:
     resource: "@FundeuisEducacionBundle/Resources/config/routing/estudiantenf.yml"
     prefix:   /administrador/educacion/estudiantenf
     
+FundeuisEducacionBundle_estudiantenf_educacion_estudiantenf:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/estudiantenfEstudiantenf.yml"
+    prefix:   /estudiantenf
+    
 FundeuisEducacionBundle_administrador_configuracion_programaacademico:
     resource: "@FundeuisEducacionBundle/Resources/config/routing/programaacademico.yml"
     prefix:   /administrador/configuracion/programaacademico
+    
+FundeuisEducacionBundle_administrador_educacion_usuariocurso:
+    resource: "@FundeuisEducacionBundle/Resources/config/routing/usuariocurso.yml"
+    prefix:   /administrador/educacion/usuariocurso
+
+login_check:
+    pattern: /login_check
 
 #FundeuisEducacionBundle_administrador_configuracion_administrador:
 #    resource: "@FundeuisEducacionBundle/Resources/config/routing/conocimiento.yml"

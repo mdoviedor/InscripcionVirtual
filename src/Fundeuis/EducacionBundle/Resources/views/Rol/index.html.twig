@@ -1,9 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+      <h1>Rol list</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
 
-{% block body -%}
-    <h1>Rol list</h1>
+{% block contenido -%}   
+ 
 
-    <table class="records_list">
+    <table class="table tab-content table-condensed table-hover table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>

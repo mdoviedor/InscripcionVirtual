@@ -1,11 +1,18 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
     <h1>Rol creation</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}   
+    
 
     {{ form(form) }}
 
-        <ul class="record_actions">
+        <ul class="table tab-content table-condensed table-hover table-striped records_list">
     <li>
         <a href="{{ path('administrador_configuracion_rol') }}">
             Back to the list

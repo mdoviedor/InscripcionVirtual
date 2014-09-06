@@ -1,9 +1,16 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
     <h1>Conocimiento list</h1>
 
-    <table class="records_list">
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%} 
+
+    <table class="table tab-content table-condensed table-hover table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -12,30 +19,30 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('administrador_configuracion_conocimiento_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.descripcion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('administrador_configuracion_conocimiento_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('administrador_configuracion_conocimiento_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('administrador_configuracion_conocimiento_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.descripcion }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('administrador_configuracion_conocimiento_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_configuracion_conocimiento_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('administrador_configuracion_conocimiento_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock %}

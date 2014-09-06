@@ -284,4 +284,14 @@ class Administrador
     {
         return $this->user;
     }
+
+    /**
+     * Get idadministrador
+     *
+     * @return integer 
+     */
+    public function getIdadministrador()
+    {
+        return $this->idadministrador;
+    }
 }

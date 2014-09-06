@@ -1,9 +1,16 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
     <h1>Rol</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
 
-    <table class="record_properties">
+{% block contenido -%}   
+
+
+    <table class="table tab-content table-condensed table-hover table-striped records_properties">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -16,17 +23,17 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('administrador_configuracion_rol') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('administrador_configuracion_rol_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_configuracion_rol') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('administrador_configuracion_rol_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

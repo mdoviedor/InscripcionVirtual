@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Fundeuis\EducacionBundle\Entity\Curso;
 use Fundeuis\EducacionBundle\Form\CursoType;
 use Fundeuis\EducacionBundle\Entity\Administrador;
+use Fundeuis\EducacionBundle\Entity\UsuarioCurso;
 
 /**
  * Curso controller.
@@ -15,6 +16,7 @@ use Fundeuis\EducacionBundle\Entity\Administrador;
 class CursoController extends Controller {
 
     const RUTAADMINISTRADOR = 'FundeuisEducacionBundle:Administrador';
+    const RUTAUSUARIOCURSO = 'FundeuisEducacionBundle:UsuarioCurso';
 
     /**
      * Lists all Curso entities.
@@ -104,8 +106,12 @@ class CursoController extends Controller {
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
+        $preinscritos = new UsuarioCurso();
 
         $entity = $em->getRepository('FundeuisEducacionBundle:Curso')->find($id);
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->findBy(array('curso' => $id, 'estado' => true), array('fecharegistro' => 'DESC'));
+        $preinscritos = $em->getRepository(self::RUTAUSUARIOCURSO)->findBy(array('curso' => $id, 'estado' => false), array('fecharegistro' => 'DESC'));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Curso entity.');
@@ -116,6 +122,8 @@ class CursoController extends Controller {
         return $this->render('FundeuisEducacionBundle:Curso:show.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
+                    'usuarioCurso' => $usuarioCurso,
+                    'preinscritos' => $preinscritos
         ));
     }
 

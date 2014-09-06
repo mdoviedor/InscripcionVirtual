@@ -1,34 +1,37 @@
 {% extends "::superadministrador.html.twig" %}
 {% block titulo %}
-    <h1>Nombrecurso list</h1>
+    <h1>UsuarioCurso list</h1>
 {% endblock %}
 {% block submenuizquierdo %}
 {% endblock %}
 {% block submenuderecho %}
 {% endblock %}
 
-{% block contenido -%}   
+{% block contenido -%} 
 
-    <table class="table tab-content table-hover table-striped records_list">
+
+    <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Fecharegistro</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('administrador_configuracion_nombrecurso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nombre }}</td>
+                    <td><a href="{{ path('administrador_educacion_usuariocurso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.estado }}</td>
+                    <td>{% if entity.fecharegistro %}{{ entity.fecharegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('administrador_configuracion_nombrecurso_show', { 'id': entity.id }) }}">show</a>
+                                <a href="{{ path('administrador_educacion_usuariocurso_show', { 'id': entity.id }) }}">show</a>
                             </li>
                             <li>
-                                <a href="{{ path('administrador_configuracion_nombrecurso_edit', { 'id': entity.id }) }}">edit</a>
+                                <a href="{{ path('administrador_educacion_usuariocurso_edit', { 'id': entity.id }) }}">edit</a>
                             </li>
                         </ul>
                     </td>
@@ -39,7 +42,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('administrador_configuracion_nombrecurso_new') }}">
+            <a href="{{ path('administrador_educacion_usuariocurso_new', {'id':'1'}) }}">
                 Create a new entry
             </a>
         </li>

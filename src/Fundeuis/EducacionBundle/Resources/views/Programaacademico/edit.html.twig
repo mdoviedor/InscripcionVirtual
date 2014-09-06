@@ -1,16 +1,22 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
     <h1>Programaacademico edit</h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}  
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('administrador_configuracion_programaacademico') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('administrador_configuracion_programaacademico') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

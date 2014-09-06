@@ -1,0 +1,30 @@
+administrador_educacion_usuariocurso:
+    path:     /
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:index" }
+
+administrador_educacion_usuariocurso_show:
+    path:     /{id}/show
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:show" }
+
+administrador_educacion_usuariocurso_new:
+    path:     /new/{id}
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:new" }
+
+administrador_educacion_usuariocurso_create:
+    path:     /create/{id}
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:create" }
+    requirements: { _method: post }
+
+administrador_educacion_usuariocurso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:edit" }
+
+administrador_educacion_usuariocurso_update:
+    path:     /{id}/update
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:update" }
+    requirements: { _method: post|put }
+
+administrador_educacion_usuariocurso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FundeuisEducacionBundle:UsuarioCurso:delete" }
+    requirements: { _method: post|delete }

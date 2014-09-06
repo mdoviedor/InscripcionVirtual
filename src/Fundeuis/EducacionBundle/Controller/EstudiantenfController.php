@@ -10,6 +10,7 @@ use Fundeuis\EducacionBundle\Entity\Administrador;
 use Fundeuis\EducacionBundle\Form\EstudiantenfType;
 use Fundeuis\UserBundle\Entity\User;
 use Fundeuis\EducacionBundle\Entity\Rol;
+use Fundeuis\EducacionBundle\Entity\UsuarioCurso;
 
 /**
  * Estudiantenf controller.
@@ -22,6 +23,7 @@ class EstudiantenfController extends Controller {
     const RUTAUSER = 'FundeuisEducacionBundle:User';
     const RUTAESTUDIANTENF = 'FundeuisEducacionBundle:Estudiantenf';
     const RUTAADMINISTRADOR = 'FundeuisEducacionBundle:Administrador';
+    const RUTAUSUARIOCURSO = 'FundeuisEducacionBundle:UsuarioCurso';
 
     /**
      * Lists all Estudiantenf entities.
@@ -124,12 +126,12 @@ class EstudiantenfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Estudiantenf $entity) {
-        $form = $this->createForm(new EstudiantenfType(null), $entity, array(
+        $form = $this->createForm(new EstudiantenfType(null, null, null), $entity, array(
             'action' => $this->generateUrl('administrador_educacion_estudiantenf_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Create', 'attr' => array('class' => "btn btn-success btn-lg")));
 
         return $form;
     }
@@ -154,18 +156,22 @@ class EstudiantenfController extends Controller {
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
 
         $entity = $em->getRepository('FundeuisEducacionBundle:Estudiantenf')->find($id);
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->findBy(array('estudiantenf' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Estudiantenf entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+      //  $deleteMatricula = 
 
         return $this->render('FundeuisEducacionBundle:Estudiantenf:show.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
+                    'usuarioCurso' => $usuarioCurso
         ));
     }
 
@@ -205,7 +211,7 @@ class EstudiantenfController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => "btn btn-success btn-lg")));
 
         return $form;
     }
@@ -326,6 +332,163 @@ class EstudiantenfController extends Controller {
                         ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => "btn btn-danger btn-lg", 'onClick' => 'return ConfirmarAccion();')))
                         ->getForm()
         ;
+    }
+    
+    
+
+    /**
+     * Preinscrion del usuario a new Estudiantenf entity.
+     *
+     */
+    public function createPreinscripcionAction(Request $request) {
+        $entity = new Estudiantenf();
+        $ciudad = new Ciudad();
+        $rol = new Rol();
+        $user = new User();
+        $autor = new Administrador();
+        $userManager = $this->get('fos_user.user_manager'); // Instancia del manejador del bundle FOSUser
+
+
+        $form = $this->createCreatePreinscripcionForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $dep = $form->get('departamento')->getData();
+            $nomciu = $form->get('ciudad')->getData();
+            $email = $form->get('correoElectronico')->getData();
+            $username = $form->get('documentoidentidad')->getData();
+            $ciudad = $em->getRepository(self::RUTACIUDAD)->busquedaCiudad($dep, $nomciu);
+
+            if ($ciudad) {
+
+                $rol = $em->getRepository(self::RUTAROL)->findOneBy(array('nombre' => 'ROLE_ESTUDIANTENF'));
+                $autor = $em->getRepository(self::RUTAADMINISTRADOR)->findOneBy(array('documentoidentidad' => 1000000));
+
+                $user->setEmail($email);
+                $user->setUsername($username);
+                $user->setEnabled(true);
+                $user->setPlainPassword($username);
+                $user->r($rol->getNombre());
+
+                $userManager->updateUser($user); //Actualizacion del contenido del manejador
+                $this->getDoctrine()->getManager()->flush();
+
+                $user = $em->getRepository(self::RUTAUSER)->findOneBy(array('username' => $username));
+
+                $entity->setRol($rol);
+                $entity->setUser($user);
+                $entity->setAutor($autor);
+                $entity->setCiudad($ciudad[0]);
+                $em->persist($entity);
+                $em->flush();
+
+                $mensaje = "Usted se ha registrado con exito";
+                $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                        'notice', $mensaje
+                );
+
+                return $this->redirect($this->generateUrl('Fundeuis_index'));
+            } else {
+                $mensaje = "La ciudad que esta indicando no existe, intentelo de nuevo";
+                $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                        'error', $mensaje
+                );
+            }
+        } else {
+            $mensaje = "Los datos ingresados son incorrectos. Intentelo de nuevo.";
+            $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                    'error', $mensaje
+            );
+        }
+
+        return $this->render('FundeuisEducacionBundle:Estudiantenf:newPreinscripcion.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a form to create a Estudiantenf entity. Preinscripcion 
+     *
+     * @param Estudiantenf $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreatePreinscripcionForm(Estudiantenf $entity) {
+        $form = $this->createForm(new EstudiantenfType(null, null, null), $entity, array(
+            'action' => $this->generateUrl('estudiantenf_educacion_estudiantenf_createPreinscripcion'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Create', 'attr' => array('class' => "btn btn-success btn-lg")));
+
+        return $form;
+    }
+
+    /**
+     * Displays a form to create a new Estudiantenf entity.
+     *
+     */
+    public function newPreinscripcionAction() {
+        $entity = new Estudiantenf();
+        $form = $this->createCreatePreinscripcionForm($entity);
+
+        return $this->render('FundeuisEducacionBundle:Estudiantenf:newPreinscripcion.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+        ));
+    }
+
+    public function inicioPreinscripcionAction() {
+        $entity = new UsuarioCurso();
+        $buscarMatricula1 = new UsuarioCurso();
+        $buscarMatricula2 = new UsuarioCurso();
+        $estudiantenf = new Estudiantenf();
+        $em = $this->getDoctrine()->getManager();
+
+        /*
+         * Obtener username de la sesion para determinar el autor
+         */
+        $userManager = $this->get('security.context')->getToken()->getUser();
+        $u = $userManager->getUsername();
+        /*
+         *
+         */
+
+        $estudiantenf = $em->getRepository(self::RUTAESTUDIANTENF)->findOneBy(array('documentoidentidad' => $u));
+
+        $entity = $em->getRepository(self::RUTAUSUARIOCURSO)->buscarCursosAnoActualVigente();
+        $buscarMatricula1 = $em->getRepository(self::RUTAUSUARIOCURSO)->buscarMatriculaUsuarioActiva1($estudiantenf->getId());
+        $buscarMatricula2 = $em->getRepository(self::RUTAUSUARIOCURSO)->buscarMatriculaUsuarioActiva2($estudiantenf->getId());
+        return $this->render('FundeuisEducacionBundle:Estudiantenf:inicioPreinscripcion.html.twig', array(
+                    'entity' => $entity,
+                    'matriculaVigente1' => $buscarMatricula1,
+                    'matriculaVigente2' => $buscarMatricula2
+        ));
+    }
+
+    public function informacionPreinscripcionAction() {
+        $usuarioCurso = new UsuarioCurso();
+        $estudiantenf = new Estudiantenf();
+        $em = $this->getDoctrine()->getManager();
+
+        /*
+         * Obtener username de la sesion para determinar el autor
+         */
+        $userManager = $this->get('security.context')->getToken()->getUser();
+        $u = $userManager->getUsername();
+        /*
+         *
+         */
+
+        $estudiantenf = $em->getRepository(self::RUTAESTUDIANTENF)->findOneBy(array('documentoidentidad' => $u));
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->findBy(array('estudiantenf' => $estudiantenf->getId(), 'estado' => true));
+
+        return $this->render('FundeuisEducacionBundle:Estudiantenf:informacionPreinscripcion.html.twig', array(
+                    'usuarioCurso' => $usuarioCurso,
+                    'estudiantenf' => $estudiantenf,
+        ));
     }
 
 }
