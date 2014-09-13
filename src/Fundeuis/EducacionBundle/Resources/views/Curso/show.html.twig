@@ -88,26 +88,26 @@
                     <td>{{ entity.estudiantenf.telefono }}</td>
                     <td>{{ entity.estudiantenf.celular }}</td>            
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.estudiantenf.id }) }}">edit</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_usuariocurso_delete', { 'id': entity.id }) }}">
-                                    Eliminar Matricula
-                                </a>                            
-                            </li>
-                        </ul>
+
+                        <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">show</a>
+
+                        <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.estudiantenf.id }) }}">edit</a>
+
+                        <a onClick= 'return ConfirmarAccion();' class="btn btn-primary btn-xs" href="{{ path('administrador_educacion_curso_cambiarestadomatricula', { 'id': entity.id }) }}">
+                            Cambiar Estado
+                        </a> 
+
+                        <a onClick= 'return ConfirmarAccion();' class="btn btn-danger btn-xs" href="{{ path('administrador_educacion_curso_eliminarmatricula', { 'id': entity.id }) }}">
+                            Eliminar Matricula
+                        </a>                            
+
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <h3>Pre-inscritos</h3>  
+    <h3>Pre-Matriculados</h3>  
 
     <table class="table tab-content table-condensed table-hover table-striped records_list">
         <thead>
@@ -123,7 +123,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for entity in preinscritos %}
+            {% for entity in preinscritos %}              
                 <tr>
                     <td><a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">{{ entity.estudiantenf.id }}</a></td>
                     <td>{{ entity.estudiantenf.documentoidentidad }}</td>
@@ -133,19 +133,17 @@
                     <td>{{ entity.estudiantenf.telefono }}</td>
                     <td>{{ entity.estudiantenf.celular }}</td>            
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.estudiantenf.id }) }}">edit</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_usuariocurso_delete', { 'id': entity.id }) }}">
-                                    Eliminar Matricula
-                                </a>                            
-                            </li>
-                        </ul>
+                        <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">show</a>
+
+                        <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.estudiantenf.id }) }}">edit</a>
+
+                        <a onClick= 'return ConfirmarAccion();' class="btn btn-primary btn-xs" href="{{ path('administrador_educacion_curso_cambiarestadomatricula', { 'id': entity.id }) }}">
+                            Cambiar Estado
+                        </a> 
+
+                        <a onClick= 'return ConfirmarAccion();' class="btn btn-danger btn-xs" href="{{ path('administrador_educacion_curso_eliminarmatricula', { 'id': entity.id }) }}">
+                            Eliminar Matricula
+                        </a>    
                     </td>
                 </tr>
             {% endfor %}

@@ -1,30 +1,31 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
-
 {% block fos_user_content %}
-    {% if error %}
-        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-    {% endif %}
+    <div style="max-width: 400px;; background-color: #F8F8F8; padding: 40px 40px 40px 40px;" class="center-block">      
+        {% if error %}
+            <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+        {% endif %}
 
-    <form role="form" action="{{ path("fos_user_security_check") }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-        <div class="form-group">
-            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Enter username" />          
-            <p class="help-block">Número de documento de identidad.</p>
-        </div>
+        <form role="form" action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <div class="form-group">
+                <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Enter username" />          
+                <p class="help-block">Número de documento de identidad.</p>
+            </div>
 
-        <div class="form-group">
-            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-            <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Enter password" />
-            <p class="help-block">Contraseña. Si es su primera vez, ingrese con su número de documento de identidad.</p>
-        </div>
+            <div class="form-group">
+                <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Enter password" />
+                <p class="help-block">Contraseña. Si es su primera vez, ingrese con su número de documento de identidad.</p>
+            </div>
 
-        <div class="checkbox">
-            <label>
-                  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                  <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-            </label>
-        </div>  
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />      
-    </form>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                </label>
+            </div>  
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />      
+        </form>
+    </div>
 {% endblock fos_user_content %}

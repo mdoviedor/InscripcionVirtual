@@ -28,3 +28,11 @@ administrador_educacion_curso_delete:
     path:     /{id}/delete
     defaults: { _controller: "FundeuisEducacionBundle:Curso:delete" }
     requirements: { _method: post|delete }
+    
+administrador_educacion_curso_eliminarmatricula:
+    path:     /{id}.{origen}/eliminarMatricula
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:eliminarMatricula", origen: curso }
+    
+administrador_educacion_curso_cambiarestadomatricula:
+    path:     /{id}.{origen}/cambiarEstadoMatricula
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:cambiarEstadoMatricula", origen: curso }

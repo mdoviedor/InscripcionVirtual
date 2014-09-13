@@ -14,4 +14,8 @@ estudiantenf_educacion_estudiantenf_inicioPreinscripcion:
 estudiantenf_educacion_estudiantenf_informacionPreinscripcion:
     path:     /informacion
     defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:informacionPreinscripcion" }
+    
+estudiantenf_educacion_estudiantenf_prematricula:
+    path:     /{id}/prematricula
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:preMatricula" }
    

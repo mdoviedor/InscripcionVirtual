@@ -11,6 +11,7 @@ use Fundeuis\EducacionBundle\Form\EstudiantenfType;
 use Fundeuis\UserBundle\Entity\User;
 use Fundeuis\EducacionBundle\Entity\Rol;
 use Fundeuis\EducacionBundle\Entity\UsuarioCurso;
+use Fundeuis\EducacionBundle\Entity\Curso;
 
 /**
  * Estudiantenf controller.
@@ -24,6 +25,7 @@ class EstudiantenfController extends Controller {
     const RUTAESTUDIANTENF = 'FundeuisEducacionBundle:Estudiantenf';
     const RUTAADMINISTRADOR = 'FundeuisEducacionBundle:Administrador';
     const RUTAUSUARIOCURSO = 'FundeuisEducacionBundle:UsuarioCurso';
+    const RUTACURSO = 'FundeuisEducacionBundle:Curso';
 
     /**
      * Lists all Estudiantenf entities.
@@ -166,7 +168,6 @@ class EstudiantenfController extends Controller {
         }
 
         $deleteForm = $this->createDeleteForm($id);
-      //  $deleteMatricula = 
 
         return $this->render('FundeuisEducacionBundle:Estudiantenf:show.html.twig', array(
                     'entity' => $entity,
@@ -333,8 +334,52 @@ class EstudiantenfController extends Controller {
                         ->getForm()
         ;
     }
-    
-    
+
+    /**
+     * Recibe el id correspondiente al idusuariocurso del 
+     * modelo UsuarioCurso. 
+     * 
+     * @param type $id
+     */
+    public function eliminarMatriculaAction($id, $origen) {
+        $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->find($id);
+        $em->remove($usuarioCurso);
+        $em->flush();
+
+        if ($origen == 'estudiantenf') {
+            return $this->redirect($this->generateUrl('administrador_educacion_estudiantenf_show', array('id' => $usuarioCurso->getEstudiantenf()->getId())));
+        } else {
+            return $this->redirect($this->generateUrl('administrador_educacion_curso_show', array('id' => $usuarioCurso->getCurso()->getId())));
+        }
+    }
+
+    public function cambiarEstadoMatriculaAction($id, $origen) {
+        $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->find($id);
+        if ($usuarioCurso->getEstado()) {
+            $usuarioCurso->setEstado(false);
+        } else {
+            $usuarioCurso->setEstado(true);
+        }
+        $em->persist($usuarioCurso);
+        $em->flush();
+
+        if ($origen == 'estudiantenf') {
+            return $this->redirect($this->generateUrl('administrador_educacion_estudiantenf_show', array('id' => $usuarioCurso->getEstudiantenf()->getId())));
+        } else {
+            return $this->redirect($this->generateUrl('administrador_educacion_curso_show', array('id' => $usuarioCurso->getCurso()->getId())));
+        }
+    }
+
+    /**
+     * 
+     * ACCIONES Y METODOS PARA LOS ESTUDIANTES.
+     * 
+     * 
+     */
 
     /**
      * Preinscrion del usuario a new Estudiantenf entity.
@@ -350,56 +395,58 @@ class EstudiantenfController extends Controller {
 
 
         $form = $this->createCreatePreinscripcionForm($entity);
-        $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $dep = $form->get('departamento')->getData();
-            $nomciu = $form->get('ciudad')->getData();
-            $email = $form->get('correoElectronico')->getData();
-            $username = $form->get('documentoidentidad')->getData();
-            $ciudad = $em->getRepository(self::RUTACIUDAD)->busquedaCiudad($dep, $nomciu);
+        if ($request->getMethod() == "POST") {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $dep = $form->get('departamento')->getData();
+                $nomciu = $form->get('ciudad')->getData();
+                $email = $form->get('correoElectronico')->getData();
+                $username = $form->get('documentoidentidad')->getData();
+                $ciudad = $em->getRepository(self::RUTACIUDAD)->busquedaCiudad($dep, $nomciu);
 
-            if ($ciudad) {
+                if ($ciudad) {
 
-                $rol = $em->getRepository(self::RUTAROL)->findOneBy(array('nombre' => 'ROLE_ESTUDIANTENF'));
-                $autor = $em->getRepository(self::RUTAADMINISTRADOR)->findOneBy(array('documentoidentidad' => 1000000));
+                    $rol = $em->getRepository(self::RUTAROL)->findOneBy(array('nombre' => 'ROLE_ESTUDIANTENF'));
+                    $autor = $em->getRepository(self::RUTAADMINISTRADOR)->findOneBy(array('documentoidentidad' => 1000000));
 
-                $user->setEmail($email);
-                $user->setUsername($username);
-                $user->setEnabled(true);
-                $user->setPlainPassword($username);
-                $user->r($rol->getNombre());
+                    $user->setEmail($email);
+                    $user->setUsername($username);
+                    $user->setEnabled(true);
+                    $user->setPlainPassword($username);
+                    $user->r($rol->getNombre());
 
-                $userManager->updateUser($user); //Actualizacion del contenido del manejador
-                $this->getDoctrine()->getManager()->flush();
+                    $userManager->updateUser($user); //Actualizacion del contenido del manejador
+                    $this->getDoctrine()->getManager()->flush();
 
-                $user = $em->getRepository(self::RUTAUSER)->findOneBy(array('username' => $username));
+                    $user = $em->getRepository(self::RUTAUSER)->findOneBy(array('username' => $username));
 
-                $entity->setRol($rol);
-                $entity->setUser($user);
-                $entity->setAutor($autor);
-                $entity->setCiudad($ciudad[0]);
-                $em->persist($entity);
-                $em->flush();
+                    $entity->setRol($rol);
+                    $entity->setUser($user);
+                    $entity->setAutor($autor);
+                    $entity->setCiudad($ciudad[0]);
+                    $em->persist($entity);
+                    $em->flush();
 
-                $mensaje = "Usted se ha registrado con exito";
-                $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
-                        'notice', $mensaje
-                );
+                    $mensaje = "Usted se ha registrado con exito";
+                    $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                            'notice', $mensaje
+                    );
 
-                return $this->redirect($this->generateUrl('Fundeuis_index'));
+                    return $this->redirect($this->generateUrl('Fundeuis_index'));
+                } else {
+                    $mensaje = "La ciudad que esta indicando no existe, intentelo de nuevo";
+                    $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                            'error', $mensaje
+                    );
+                }
             } else {
-                $mensaje = "La ciudad que esta indicando no existe, intentelo de nuevo";
+                $mensaje = "Los datos ingresados son incorrectos. Intentelo de nuevo.";
                 $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
                         'error', $mensaje
                 );
             }
-        } else {
-            $mensaje = "Los datos ingresados son incorrectos. Intentelo de nuevo.";
-            $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
-                    'error', $mensaje
-            );
         }
 
         return $this->render('FundeuisEducacionBundle:Estudiantenf:newPreinscripcion.html.twig', array(
@@ -421,7 +468,7 @@ class EstudiantenfController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create', 'attr' => array('class' => "btn btn-success btn-lg")));
+        $form->add('submit', 'submit', array('label' => 'Registrarse', 'attr' => array('class' => "btn btn-success btn-lg")));
 
         return $form;
     }
@@ -489,6 +536,56 @@ class EstudiantenfController extends Controller {
                     'usuarioCurso' => $usuarioCurso,
                     'estudiantenf' => $estudiantenf,
         ));
+    }
+
+    /**
+     * Recibe el id correpondiente al idcurso del modelo Curso
+     * 
+     * @param type $id
+     */
+    public function preMatriculaAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
+        $curso = new Curso();
+        $estudiantenf = new Estudiantenf();
+        /*
+         * Obtener username de la sesion para determinar el autor
+         */
+        $userManager = $this->get('security.context')->getToken()->getUser();
+        $u = $userManager->getUsername();
+        /*
+         *
+         */
+        $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->comprobarCursosAnoActualVigente($id);
+        if ($usuarioCurso) {  // Si el curso es vigente para matricularse
+            $usuarioCurso = new UsuarioCurso();
+            $curso = $em->getRepository(self::RUTACURSO)->find($id);
+            $estudiantenf = $em->getRepository(self::RUTAESTUDIANTENF)->findOneBy(array('documentoidentidad' => $u));
+
+            $usuarioCurso->setCurso($curso);
+            $usuarioCurso->setEstudiantenf($estudiantenf);
+            $usuarioCurso->setFecharegistro(new \DateTime('now'));
+            $usuarioCurso->setEstado(false);
+
+            $em->persist($usuarioCurso);
+            $em->flush();
+
+            $mensaje = "Se ha realizado la respectiva preinscripción. Usted debe "
+                    . "enviar una foto con fondo azul, tarjeta de identidad y recibo"
+                    . " de consignación al correo electrónico educacion@fundeuis.com "
+                    . "o secretaria@fundeuis.com. Al validar la matricula usted será "
+                    . "notificado via correo electrónico.";
+            $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                    'notice', $mensaje
+            );
+        } else {
+            $mensaje = "El curso que intenta matricular no existe o no se encuentra disponible. Intentelo de nuevo.";
+            $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
+                    'error', $mensaje
+            );
+        }
+
+        return $this->redirect($this->generateUrl('estudiantenf_educacion_estudiantenf_inicioPreinscripcion'));
     }
 
 }

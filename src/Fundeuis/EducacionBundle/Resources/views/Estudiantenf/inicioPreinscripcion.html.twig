@@ -6,11 +6,8 @@
 {% endblock %}
 {% block submenuderecho %}
 {% endblock %}
-
 {% block contenido -%}   
-
     {%if matriculaVigente1 or matriculaVigente2 %}
-
         <div class="alert alert-warning" role="alert">
             <b>Atención: </b>Usted se encuentra matriculado en un curso que esta en desarrollo o esta por empezar. Si seleccionó un curso por equivocación y desea hacer un cambio, comuníquese con nostros.             
         </div>
@@ -18,47 +15,49 @@
     {%else%}
         {% for entity in entity %}
             <h3>{{ entity.nombrecurso.nombre }}</h3>
-
-            <table class="table tab-content table-hover table-striped record_properties">
-                <tbody>            
-                    <tr>
-                        <th>Fechainicio</th>
-                        <td>{{ entity.fechainicio|date('Y-m-d') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Fechafin</th>
-                        <td>{{ entity.fechafin|date('Y-m-d') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Duracion</th>
-                        <td>{{ entity.duracion }}</td>
-                    </tr>
-                    <tr>
-                        <th>Horainiciomanana</th>
-                        <td>{{ entity.horainiciomanana |date('H:i:s')  }}</td>
-                    </tr>
-                    <tr>
-                        <th>Horafinmanana</th>
-                        <td>{{ entity.horafinmanana |date('H:i:s') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Horainiciotarde</th>
-                        <td>{{ entity.horainiciotarde |date('H:i:s') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Horafintarde</th>
-                        <td>{{ entity.horafintarde|date('H:i:s')  }}</td>
-                    </tr>
-                    <tr>
-                        <th>Intensidadhoraria</th>
-                        <td>{{ entity.intensidadhoraria }}</td>
-                    </tr>
-                    <tr>
-                        <th>Descripcion</th>
-                        <td>{{ entity.descripcion }}</td>
-                    </tr>                      
-                </tbody>
-            </table>            
+            <div class="table-responsive">
+                <table class="table tab-content table-hover table-striped record_properties">
+                    <tbody>            
+                        <tr>
+                            <th>Fecha de Inicio:</th>
+                            <td>{{ entity.fechainicio|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Finalización:</th>
+                            <td>{{ entity.fechafin|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Duración en horas:</th>
+                            <td>{{ entity.duracion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mañana - Hora de inicio de la jornada:</th>
+                            <td>{{ entity.horainiciomanana |date('H:i:s')  }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mañana - Hora de finalización de la jornada:</th>
+                            <td>{{ entity.horafinmanana |date('H:i:s') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tarde - Hora de inicio de la jornada:</th>
+                            <td>{{ entity.horainiciotarde |date('H:i:s') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tarde - Hora de finalizacion de la jornada:</th>
+                            <td>{{ entity.horafintarde|date('H:i:s')  }}</td>
+                        </tr>
+                        <tr>
+                            <th>Intensidad Horaria:</th>
+                            <td>{{ entity.intensidadhoraria }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción:</th>
+                            <td>{{ entity.descripcion }}</td>
+                        </tr>                      
+                    </tbody>
+                </table>  
+            </div>
+            <a class="btn btn-success" onClick = 'return ConfirmarAccion();' href="{{path('estudiantenf_educacion_estudiantenf_prematricula',{'id':entity.idcurso})}}">Matricular</a>
         {% endfor %}
     {% endif %}
 

@@ -101,45 +101,91 @@
                 <th>Duracion</th>
                 <th>Horariomañana</th>         
                 <th>Horariotarde</th>    
-                <th>Intensidadhoraria</th>
-                <th>Descripcion</th>
+                <th>Intensidadhoraria</th>         
                 <th>Nombre curso</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for entity in usuarioCurso %}
-                <tr>
-                    <td><a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">{{ entity.curso.id }}</a></td>
-                    <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
-                    <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
-                    <td>{{ entity.curso.duracion }}</td>
-                    <td>{{ entity.curso.horainiciomanana|date('H:i:s')   }} - {{ entity.curso.horafinmanana|date('H:i:s')   }}</td>
-                    <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
-                    <td>{{ entity.curso.intensidadhoraria }}</td>
-                    <td>{{ entity.curso.descripcion }}</td>
-                    <td>{{ entity.curso.nombrecurso.nombre }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('administrador_educacion_curso_edit', { 'id': entity.curso.id }) }}">edit</a>
-                            </li>
-                            <li>
-                             
-                                <a href="{{ path('administrador_educacion_usuariocurso_delete', { 'id': entity.id }) }}">
-                                    Eliminar Matricula
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+                {% if entity.estado  %}
+                    <tr>
+                        <td><a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">{{ entity.curso.id }}</a></td>
+                        <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                        <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ entity.curso.duracion }}</td>
+                        <td>{{ entity.curso.horainiciomanana|date('H:i:s')   }} - {{ entity.curso.horafinmanana|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.intensidadhoraria }}</td>                 
+                        <td>{{ entity.curso.nombrecurso.nombre }}</td>
+                        <td>
+                            <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">Ver</a>
+
+                            <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_curso_edit', { 'id': entity.curso.id }) }}">Editar</a>
+
+                            <a onClick= 'return ConfirmarAccion();' class="btn btn-primary btn-xs" href="{{ path('administrador_educacion_estudiantenf_cambiarestadomatricula', { 'id': entity.id }) }}">
+                                Cambiar Estado
+                            </a> 
+
+                            <a onClick= 'return ConfirmarAccion();' class="btn btn-danger btn-xs" href="{{ path('administrador_educacion_estudiantenf_eliminarmatricula', { 'id': entity.id }) }}">
+                                Eliminar Matricula
+                            </a>     
+                        </td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
 
+    <h3>Cursos Pre-Matriculados</h3>
+    <table class="table tab-content table-hover table-striped records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Duracion</th>
+                <th>Horariomañana</th>         
+                <th>Horariotarde</th>    
+                <th>Intensidadhoraria</th>
+
+                <th>Nombre curso</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in usuarioCurso %}
+                {% if not entity.estado %}
+                    <tr>
+                        <td><a href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">{{ entity.curso.id }}</a></td>
+                        <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                        <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ entity.curso.duracion }}</td>
+                        <td>{{ entity.curso.horainiciomanana|date('H:i:s')   }} - {{ entity.curso.horafinmanana|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.intensidadhoraria }}</td>
+
+                        <td>{{ entity.curso.nombrecurso.nombre }}</td>
+                        <td>
+
+                            <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_curso_show', { 'id': entity.curso.id }) }}">Ver</a>
+
+                            <a class="btn btn-success btn-xs" href="{{ path('administrador_educacion_curso_edit', { 'id': entity.curso.id }) }}">Editar</a>
+
+                            <a onClick= 'return ConfirmarAccion();' class="btn btn-primary btn-xs" href="{{ path('administrador_educacion_estudiantenf_cambiarestadomatricula', { 'id': entity.id }) }}">
+                                Cambiar Estado
+                            </a> 
+
+                            <a onClick= 'return ConfirmarAccion();' class="btn btn-danger btn-xs" href="{{ path('administrador_educacion_estudiantenf_eliminarmatricula', { 'id': entity.id }) }}">
+                                Eliminar Matricula
+                            </a>                       
+
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
     <ul class="record_actions">
         <li>
             <a href="{{ path('administrador_educacion_estudiantenf') }}">
@@ -147,7 +193,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">
+            <a class="btn btn-success" href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">
                 Edit
             </a>
         </li>

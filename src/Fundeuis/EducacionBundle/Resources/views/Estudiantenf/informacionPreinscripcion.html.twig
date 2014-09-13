@@ -9,112 +9,112 @@
 
 {% block contenido -%}   
 
-    <table class="table tab-content table-hover table-striped record_properties">
-        <tbody>
-            <tr>
-                <th>Documentoidentidad</th>
-                <td>{{ estudiantenf.documentoidentidad }}</td>
-            </tr>
-            <tr>
-                <th>Tipodocumentoidentidad</th>
-                <td>{{ estudiantenf.tipodocumentoidentidad }}</td>
-            </tr>
-            <tr>
-                <th>Nombres</th>
-                <td>{{ estudiantenf.nombres }}</td>
-            </tr>
-            <tr>
-                <th>Apellidos</th>
-                <td>{{ estudiantenf.apellidos }}</td>
-            </tr>
-            <tr>
-                <th>Edad</th>
-                <td>{{ estudiantenf.edad }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ estudiantenf.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Celular</th>
-                <td>{{ estudiantenf.celular }}</td>
-            </tr>
-            <tr>
-                <th>Ciudad de residencia</th>
-                <td>{{ estudiantenf.ciudad.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Departamento de residencia</th>
-                <td>{{ estudiantenf.ciudad.departamento.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Estrato</th>
-                <td>{{ estudiantenf.estrato }}</td>
-            </tr>
-            <tr>
-                <th>Universidad</th>
-                <td>{{ estudiantenf.universidad }}</td>
-            </tr>
-            <tr>
-                <th>Programaacademico</th>
-                <td>{{ estudiantenf.programaacademico }}</td>
-            </tr>
-            <tr>
-                <th>Colegio</th>
-                <td>{{ estudiantenf.colegio }}</td>
-            </tr>
-            <tr>
-                <th>¿Cómo nos conocio?</th>
-                <td>{{ estudiantenf.conocimiento }}</td>
-            </tr>
-            <tr>
-                <th>Nombresacudiente</th>
-                <td>{{ estudiantenf.nombresacudiente }}</td>
-            </tr>
-            <tr>
-                <th>Apellidosacudiente</th>
-                <td>{{ estudiantenf.apellidosacudiente }}</td>
-            </tr>
-            <tr>
-                <th>Telefonoacudiente</th>
-                <td>{{ estudiantenf.telefonoacudiente }}</td>
-            </tr>
-            <tr>
-                <th>Autor</th>
-                <td>{{ estudiantenf.autor.nombres }} {{ estudiantenf.autor.apellidos }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table tab-content table-hover table-striped record_properties">
+            <tbody>
+                <tr>
+                    <th>Documento de Identidad:</th>
+                    <td>{{ estudiantenf.documentoidentidad }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo de documento de Identidad</th>
+                    <td>{{ estudiantenf.tipodocumentoidentidad }}</td>
+                </tr>
+                <tr>
+                    <th>Nombres:</th>
+                    <td>{{ estudiantenf.nombres }}</td>
+                </tr>
+                <tr>
+                    <th>Apellidos:</th>
+                    <td>{{ estudiantenf.apellidos }}</td>
+                </tr>
+                <tr>
+                    <th>Edad:</th>
+                    <td>{{ estudiantenf.edad }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono:</th>
+                    <td>{{ estudiantenf.telefono }}</td>
+                </tr>
+                <tr>
+                    <th>Celular:</th>
+                    <td>{{ estudiantenf.celular }}</td>
+                </tr>
+                <tr>
+                    <th>Ciudad de residencia:</th>
+                    <td>{{ estudiantenf.ciudad.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Departamento de residencia:</th>
+                    <td>{{ estudiantenf.ciudad.departamento.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Estrato:</th>
+                    <td>{{ estudiantenf.estrato }}</td>
+                </tr>
+                <tr>
+                    <th>Universidad:</th>
+                    <td>{{ estudiantenf.universidad }}</td>
+                </tr>
+                <tr>
+                    <th>Programa Académico</th>
+                    <td>{{ estudiantenf.programaacademico }}</td>
+                </tr>
+                <tr>
+                    <th>Colegio</th>
+                    <td>{{ estudiantenf.colegio }}</td>
+                </tr>
+                <tr>
+                    <th>¿Cómo nos conocio?</th>
+                    <td>{{ estudiantenf.conocimiento }}</td>
+                </tr>
+                <tr>
+                    <th>Nombres del acudiente;</th>
+                    <td>{{ estudiantenf.nombresacudiente }}</td>
+                </tr>
+                <tr>
+                    <th>Apellidos del acudiente:</th>
+                    <td>{{ estudiantenf.apellidosacudiente }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono del acudiente:</th>
+                    <td>{{ estudiantenf.telefonoacudiente }}</td>
+                </tr>        
+            </tbody>
+        </table>
+    </div>
 
     <h3>Cursos Matriculados</h3>
-    <table class="table tab-content table-hover table-striped records_list">
-        <thead>
-            <tr>              
-                <th>Fechainicio</th>
-                <th>Fechafin</th>
-                <th>Duracion</th>
-                <th>Horariomañana</th>         
-                <th>Horariotarde</th>    
-                <th>Intensidadhoraria</th>
-                <th>Descripcion</th>
-                <th>Nombre curso</th>          
-            </tr>
-        </thead>
-        <tbody>
-            {% for entity in usuarioCurso %}
-                <tr>                    
-                    <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
-                    <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
-                    <td>{{ entity.curso.duracion }}</td>
-                    <td>{{ entity.curso.horainiciomanana|date('H:i:s')   }} - {{ entity.curso.horafinmanana|date('H:i:s')   }}</td>
-                    <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
-                    <td>{{ entity.curso.intensidadhoraria }}</td>
-                    <td>{{ entity.curso.descripcion }}</td>
-                    <td>{{ entity.curso.nombrecurso.nombre }}</td>               
+    <div class="table-responsive">
+        <table class="table tab-content table-hover table-striped records_list">
+            <thead>
+                <tr>              
+                    <th>Fecha de Inicio:</th>
+                    <th>Fecha de Finalización:</th>
+                    <th>Duración en horas:</th>
+                    <th>Mañana - Horario</th>      
+                    <th>Tarde - Horario</th>    
+                    <th>Intensidad Horaria:</th>
+                    <th>Descripción:</th>
+                    <th>Nombre del curso</th>          
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for entity in usuarioCurso %}
+                    <tr>                    
+                        <td>{% if entity.curso.fechainicio %}{{ entity.curso.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                        <td>{% if entity.curso.fechafin %}{{ entity.curso.fechafin|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ entity.curso.duracion }}</td>
+                        <td>{{ entity.curso.horainiciomanana|date('H:i:s')   }} - {{ entity.curso.horafinmanana|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.horainiciotarde|date('H:i:s')   }} - {{ entity.curso.horafintarde|date('H:i:s')   }}</td>
+                        <td>{{ entity.curso.intensidadhoraria }}</td>
+                        <td>{{ entity.curso.descripcion }}</td>
+                        <td>{{ entity.curso.nombrecurso.nombre }}</td>               
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
 

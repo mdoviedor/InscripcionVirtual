@@ -61,12 +61,20 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
+#swiftmailer:
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    username:  "%mailer_user%"
+#    password:  "%mailer_password%"
+#    spool:     { type: memory }
+    
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       smtpout.europe.secureserver.net
+    username:   webmaster@fundeuis.com
+    password:  
 
 # app/config/config.yml
 fos_user:

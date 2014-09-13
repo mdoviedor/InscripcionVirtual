@@ -2,13 +2,17 @@ fundeuis_educacion_homepage:
     path:     /hello/{name}
     defaults: { _controller: FundeuisEducacionBundle:Default:index }
     
+#Fundeuis_index:
+#    path:     /
+#    defaults: { _controller: FOSUserBundle:Security:login }
+
 Fundeuis_index:
     path:     /
     defaults: { _controller: FundeuisEducacionBundle:Comunidad:index }
 
 Fundeuis_recuperarContrasena:
     path:     /recuperarContrasena/
-    defaults: { _controller: FundeuisEducacionBundle:Comunidad:recuperarcontrasena }
+    defaults: { _controller: FundeuisEducacionBundle:Comunidad:index }
 
 
 FundeuisEducacionBundle_administrador_configuracion_rol:

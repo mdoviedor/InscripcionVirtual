@@ -49,8 +49,8 @@ class UsuarioCursoRepository extends EntityRepository {
     public function comprobarCursosAnoActualVigente($idCurso) {
         //$year = \date('Y');        
         return $this->getEntityManager()
-                        ->createQuery('SELECT c FROM FundeuisEducacionBundle:Curso c WHERE'
-                                . 'c.fechainicio BETWEEN :fecha AND c.fechafin AND'
+                        ->createQuery('SELECT c FROM FundeuisEducacionBundle:Curso c WHERE '
+                                . 'c.fechainicio BETWEEN :fecha AND c.fechafin AND '
                                 . 'c.idcurso = :id '
                                 . 'ORDER BY c.fechainicio ASC')
                         ->setParameter('fecha', new \DateTime("now"))
