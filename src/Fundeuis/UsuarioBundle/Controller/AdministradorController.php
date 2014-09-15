@@ -287,7 +287,7 @@ class AdministradorController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('administrador_configuracion_administrador_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => "btn btn-danger btn-lg")))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => "btn btn-danger btn-lg", 'onClick' => 'return ConfirmarAccion();')))
                         ->getForm()
         ;
     }

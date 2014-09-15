@@ -1,3 +1,7 @@
+administrador_educacion_estudiantenf_inicio:
+    path:     /inicio
+    defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:inicio" }
+    
 administrador_educacion_estudiantenf:
     path:     /
     defaults: { _controller: "FundeuisEducacionBundle:Estudiantenf:index" }

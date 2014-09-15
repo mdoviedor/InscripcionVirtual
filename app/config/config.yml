@@ -74,7 +74,7 @@ swiftmailer:
     auth_mode:  login
     host:       smtpout.europe.secureserver.net
     username:   webmaster@fundeuis.com
-    password:  
+    password:   
 
 # app/config/config.yml
 fos_user:

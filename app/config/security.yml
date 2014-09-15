@@ -23,7 +23,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administrador/, role: ROLE_SUPERADMINISTRADOR }
         - { path: ^/administrador/educacion, role: ROLE_ADMINISTRADOR }
-        - { path: ^/estudiantenf, role: ROLE_ESTUDIANTENF }
+        - { path: ^/estudiantenf, role: ROLE_ESTUDIANTENF }        
 
     role_hierarchy:
         ROLE_ADMINISTRADOR:      ROLE_ADMINISTRADOR

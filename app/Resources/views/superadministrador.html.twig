@@ -19,7 +19,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href=""><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                    <li><a href="{{path('administrador_educacion_estudiantenf_inicio')}}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Educación NF<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -33,15 +33,17 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestor de Atributos<b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li><a href="{{path('administrador_configuracion_administrador')}}">Administradores</a></li>
+
                             <li><a href="{{path('administrador_configuracion_nombrecurso')}}">Nombre de Cursos</a></li>
-                            <li class="divider"></li>
+
                             <li><a href="{{path('administrador_configuracion_rol')}}">Roles</a></li>
-                            <li class="divider"></li>
+
                             <li><a href="{{path('administrador_configuracion_tipodocumentoidentidad')}}">Documento de Identidad</a></li>
-                            <li class="divider"></li>
+
                             <li><a href="{{path('administrador_configuracion_conocimiento')}}">Conocimiento de cursos</a></li>
-                            <li class="divider"></li>
-                                {# <li><a href="{{ path('gs_proyectos_recursos_buscar') }}">Gestor de Recursos</a></li>#}
+
+                            {# <li><a href="{{ path('gs_proyectos_recursos_buscar') }}">Gestor de Recursos</a></li>#}
                         </ul>
                     </li>
                     <li class="dropdown active">
@@ -61,7 +63,7 @@
 {% block body %}
     <br><br>
 
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="page-header">
             {% block titulo %}

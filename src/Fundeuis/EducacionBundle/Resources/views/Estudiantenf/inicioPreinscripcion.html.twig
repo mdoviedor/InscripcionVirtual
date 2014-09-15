@@ -15,7 +15,7 @@
     {%else%}
         {% for entity in entity %}
             <h3>{{ entity.nombrecurso.nombre }}</h3>
-            <div class="table-responsive">
+            <div class="table-responsive center-block" >
                 <table class="table tab-content table-hover table-striped record_properties">
                     <tbody>            
                         <tr>
@@ -57,7 +57,10 @@
                     </tbody>
                 </table>  
             </div>
-            <a class="btn btn-success" onClick = 'return ConfirmarAccion();' href="{{path('estudiantenf_educacion_estudiantenf_prematricula',{'id':entity.idcurso})}}">Matricular</a>
+            <div class="text-right">
+                <a class="btn btn-success" onClick = 'return ConfirmarAccion();' href="{{path('estudiantenf_educacion_estudiantenf_prematricula',{'id':entity.idcurso})}}">Matricular</a>
+            </div>
+
         {% endfor %}
     {% endif %}
 

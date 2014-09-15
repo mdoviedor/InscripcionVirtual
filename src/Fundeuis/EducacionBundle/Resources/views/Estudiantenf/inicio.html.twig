@@ -1,0 +1,94 @@
+{% extends "::superadministrador.html.twig" %}
+{% block titulo %}
+    <h1>Estudiantes </h1>
+{% endblock %}
+{% block submenuizquierdo %}
+{% endblock %}
+{% block submenuderecho %}
+{% endblock %}
+
+{% block contenido -%}   
+
+    <div class="panel">
+    <p class="lead">Buscar</p>
+    <form method="POST" action="{{ path('administrador_educacion_estudiantenf_inicio') }}">
+        <label>Documento de identidad:</label>
+        <input class="form-control" type="text" name="documentoIdentidad">
+        <label>Nombres:</label>
+        <input class="form-control" type="text" name="nombres">
+        <label>Apellidos:</label>
+        <input class="form-control" type="text" name="apellidos">  
+        <br>
+        <div class="text-right">
+        <input class="btn btn-success" type="submit" value="Buscar">
+        </div>
+    </form>
+        </div>
+
+    <table class="table tab-content table-condensed table-hover table-striped records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Documentoidentidad</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Telefono</th>
+                <th>Celular</th>      
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in usuarioCurso %}
+                <tr>
+                    <td><a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">{{ entity.estudiantenf.id }}</a></td>
+                    <td>{{ entity.estudiantenf.documentoidentidad }}</td>
+                    <td>{{ entity.estudiantenf.nombres }}</td>
+                    <td>{{ entity.estudiantenf.apellidos }}</td>
+                    <td>{{ entity.estudiantenf.edad }}</td>
+                    <td>{{ entity.estudiantenf.telefono }}</td>
+                    <td>{{ entity.estudiantenf.celular }}</td>            
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.estudiantenf.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.estudiantenf.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_educacion_usuariocurso_new', { 'id': entity.estudiantenf.id }) }}">matricular</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for entity in busqueda %}
+                <tr>
+                    <td><a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.documentoidentidad }}</td>
+                    <td>{{ entity.nombres }}</td>
+                    <td>{{ entity.apellidos }}</td>
+                    <td>{{ entity.edad }}</td>
+                    <td>{{ entity.telefono }}</td>
+                    <td>{{ entity.celular }}</td>            
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('administrador_educacion_estudiantenf_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_educacion_estudiantenf_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('administrador_educacion_usuariocurso_new', { 'id': entity.id }) }}">matricular</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

@@ -9,16 +9,14 @@
 
 {% block contenido -%}  
 
-    {% if esMatriculado %}
+    {% if esMatriculado1 or esMatriculado2 %}
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <strong>Warning!</strong> El usuario se encuentra matriculado en otro curso.
         </div>
-
     {%else%}
         <p class="lead">{{estudiantenf.getNombres()}} {{estudiantenf.getApellidos()}}</p>
         {{ form(form) }}
-
     {%endif%}
     <ul class="record_actions">
         <li>

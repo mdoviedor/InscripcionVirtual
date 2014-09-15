@@ -22,8 +22,8 @@ class ResettingFormType extends AbstractType
         $builder->add('new', 'repeated', array(
             'type' => 'password',
             'options' => array('translation_domain' => 'FOSUserBundle'),
-            'first_options' => array('label' => 'form.new_password'),
-            'second_options' => array('label' => 'form.new_password_confirmation'),
+            'first_options' => array('label' => 'form.new_password', 'attr' => array('class' => 'form-control')),
+            'second_options' => array('label' => 'form.new_password_confirmation', 'attr' => array('class' => 'form-control')),
             'invalid_message' => 'fos_user.password.mismatch',
         ));
     }

@@ -28,6 +28,40 @@ class EstudiantenfController extends Controller {
     const RUTACURSO = 'FundeuisEducacionBundle:Curso';
 
     /**
+     * Muestra los estudiantes preinscritos a alguno de los cursos
+     * 
+     */
+    public function inicioAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $usuarioCurso = new UsuarioCurso();
+        $busqueda = new Estudiantenf();
+
+        if ($request->getMethod() == 'POST') {
+            $identificacion = $request->request->get('documentoIdentidad');
+            $nombres = $request->request->get('nombres');
+            $apellidos = $request->request->get('apellidos');
+            if (!$identificacion || $identificacion == null) {
+                $identificacion = 'XXXX';
+            }
+            if (!$nombres || $nombres == null) {
+                $nombres = 'XXXX';
+            }
+            if (!$apellidos || $apellidos == null) {
+                $apellidos = 'XXXX';
+            }
+            $busqueda = $em->getRepository(self::RUTAESTUDIANTENF)->busquedaFiltros($identificacion, $nombres, $apellidos);
+        } else {
+            $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->findBy(array('estado' => false));
+        }
+
+
+        return $this->render('FundeuisEducacionBundle:Estudiantenf:inicio.html.twig', array(
+                    'usuarioCurso' => $usuarioCurso,
+                    'busqueda' => $busqueda
+        ));
+    }
+
+    /**
      * Lists all Estudiantenf entities.
      *
      */

@@ -25,7 +25,9 @@
                     <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
                 </label>
             </div>  
-            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />      
+            <input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+            <hr>
+            <a href="{{path('fos_user_resetting_request')}}">¿No puedes acceder a tu cuenta?</a>
         </form>
     </div>
 {% endblock fos_user_content %}

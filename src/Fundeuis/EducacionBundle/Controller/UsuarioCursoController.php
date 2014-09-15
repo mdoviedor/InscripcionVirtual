@@ -103,18 +103,21 @@ class UsuarioCursoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $entity = new UsuarioCurso();
         $estudiantenf = new Estudiantenf();
-        $esMatriculado = new UsuarioCurso();
+        $esMatriculado1 = new UsuarioCurso();
+        $esMatriculado2 = new UsuarioCurso();
         $form = $this->createCreateForm($entity, $id);
 
         $estudiantenf = $em->getRepository(self::ESTUDIANTENF)->find($id);
-        $esMatriculado = $em->getRepository(self::USUARIOCURSO)->buscarMatriculaUsuarioActiva($id);
+        $esMatriculado1 = $em->getRepository(self::USUARIOCURSO)->buscarMatriculaUsuarioActiva1($id);
+        $esMatriculado2 = $em->getRepository(self::USUARIOCURSO)->buscarMatriculaUsuarioActiva2($id);
 
 
         return $this->render('FundeuisEducacionBundle:UsuarioCurso:new.html.twig', array(
                     'estudiantenf' => $estudiantenf,
                     'entity' => $entity,
                     'form' => $form->createView(),
-                    'esMatriculado' => $esMatriculado
+                    'esMatriculado1' => $esMatriculado1,
+                    'esMatriculado2' => $esMatriculado2,
         ));
     }
 

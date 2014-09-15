@@ -4,7 +4,6 @@ namespace Fundeuis\UsuarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Fundeuis\UsuarioBundle\Entity\Tipodocumentoidentidad;
 use Fundeuis\UsuarioBundle\Form\TipodocumentoidentidadType;
 
@@ -12,29 +11,27 @@ use Fundeuis\UsuarioBundle\Form\TipodocumentoidentidadType;
  * Tipodocumentoidentidad controller.
  * @author Marlon Oviedo Rueda <marlon.oviedo5@gmail.com>
  */
-class TipodocumentoidentidadController extends Controller
-{
+class TipodocumentoidentidadController extends Controller {
 
     /**
      * Lists all Tipodocumentoidentidad entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FundeuisUsuarioBundle:Tipodocumentoidentidad')->findAll();
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Tipodocumentoidentidad entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Tipodocumentoidentidad();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -48,8 +45,8 @@ class TipodocumentoidentidadController extends Controller
         }
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,8 +57,7 @@ class TipodocumentoidentidadController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Tipodocumentoidentidad $entity)
-    {
+    private function createCreateForm(Tipodocumentoidentidad $entity) {
         $form = $this->createForm(new TipodocumentoidentidadType(), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_tipodocumentoidentidad_create'),
             'method' => 'POST',
@@ -76,14 +72,13 @@ class TipodocumentoidentidadController extends Controller
      * Displays a form to create a new Tipodocumentoidentidad entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Tipodocumentoidentidad();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +86,7 @@ class TipodocumentoidentidadController extends Controller
      * Finds and displays a Tipodocumentoidentidad entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisUsuarioBundle:Tipodocumentoidentidad')->find($id);
@@ -104,8 +98,8 @@ class TipodocumentoidentidadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +107,7 @@ class TipodocumentoidentidadController extends Controller
      * Displays a form to edit an existing Tipodocumentoidentidad entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisUsuarioBundle:Tipodocumentoidentidad')->find($id);
@@ -127,21 +120,20 @@ class TipodocumentoidentidadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Tipodocumentoidentidad entity.
-    *
-    * @param Tipodocumentoidentidad $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Tipodocumentoidentidad $entity)
-    {
+     * Creates a form to edit a Tipodocumentoidentidad entity.
+     *
+     * @param Tipodocumentoidentidad $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Tipodocumentoidentidad $entity) {
         $form = $this->createForm(new TipodocumentoidentidadType(), $entity, array(
             'action' => $this->generateUrl('administrador_configuracion_tipodocumentoidentidad_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +143,12 @@ class TipodocumentoidentidadController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Tipodocumentoidentidad entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FundeuisUsuarioBundle:Tipodocumentoidentidad')->find($id);
@@ -176,17 +168,17 @@ class TipodocumentoidentidadController extends Controller
         }
 
         return $this->render('FundeuisUsuarioBundle:Tipodocumentoidentidad:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Tipodocumentoidentidad entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +204,13 @@ class TipodocumentoidentidadController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('administrador_configuracion_tipodocumentoidentidad_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('administrador_configuracion_tipodocumentoidentidad_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => "btn btn-danger btn-lg", 'onClick' => 'return ConfirmarAccion();')))
+                        ->getForm()
         ;
     }
+
 }
