@@ -19,7 +19,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/estudiantenf/new, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/estudiantenf/create, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: ROLE_SUPERADMINISTRADOR }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administrador/, role: ROLE_SUPERADMINISTRADOR }
         - { path: ^/administrador/educacion, role: ROLE_ADMINISTRADOR }

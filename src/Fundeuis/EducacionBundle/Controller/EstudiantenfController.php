@@ -134,6 +134,8 @@ class EstudiantenfController extends Controller {
                         'notice', $mensaje
                 );
 
+                $this->EnviarCorreoElectronico($mensaje . '<p>Usuario: ' . $username . '</p><p> Contraseña: ' . $username, 'Fundeuis - Registro Exitoso', $email);
+
                 return $this->redirect($this->generateUrl('administrador_educacion_estudiantenf_show', array('id' => $entity->getId())));
             } else {
                 $mensaje = "La ciudad que esta indicando no existe, intentelo de nuevo";
@@ -379,6 +381,10 @@ class EstudiantenfController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $usuarioCurso = new UsuarioCurso();
         $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->find($id);
+
+        $mensaje = 'Su matricula fué cancelada. Para mayor información comuníquese con nosotros.';
+        $this->EnviarCorreoElectronico($mensaje, "Fundeuis - Cancelación de matricula.", $usuarioCurso->getEstudiantenf()->getUser()->getEmail());
+
         $em->remove($usuarioCurso);
         $em->flush();
 
@@ -395,9 +401,13 @@ class EstudiantenfController extends Controller {
         $usuarioCurso = $em->getRepository(self::RUTAUSUARIOCURSO)->find($id);
         if ($usuarioCurso->getEstado()) {
             $usuarioCurso->setEstado(false);
+            $mensaje = 'Su matricula en el curso: ' . $usuarioCurso->getCurso()->getNombrecurso()->getNombre() . ', cambio de estado. Para mayor información comuníquese con nosotros.';
         } else {
             $usuarioCurso->setEstado(true);
+            $mensaje = 'Usted fué matriculado en el curso: ' . $usuarioCurso->getCurso()->getNombrecurso()->getNombre();
         }
+        $this->EnviarCorreoElectronico($mensaje, "Fundeuis - Estado de la matricula.", $usuarioCurso->getEstudiantenf()->getUser()->getEmail());
+
         $em->persist($usuarioCurso);
         $em->flush();
 
@@ -467,6 +477,7 @@ class EstudiantenfController extends Controller {
                     $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
                             'notice', $mensaje
                     );
+                    $this->EnviarCorreoElectronico($mensaje . '<p>Usuario: ' . $username . '</p><p> Contraseña: ' . $username, 'Fundeuis - Registro Exitoso', $email);
 
                     return $this->redirect($this->generateUrl('Fundeuis_index'));
                 } else {
@@ -612,6 +623,7 @@ class EstudiantenfController extends Controller {
             $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
                     'notice', $mensaje
             );
+            $this->EnviarCorreoElectronico($mensaje, 'FUNDEUIS - Pre Matricula', $estudiantenf->getUser()->getEmail());
         } else {
             $mensaje = "El curso que intenta matricular no existe o no se encuentra disponible. Intentelo de nuevo.";
             $this->get('session')->getFlashBag()->add(//Mensaje flash. Notificación de exito de la operación.
@@ -620,6 +632,26 @@ class EstudiantenfController extends Controller {
         }
 
         return $this->redirect($this->generateUrl('estudiantenf_educacion_estudiantenf_inicioPreinscripcion'));
+    }
+
+    /**
+     * CORREO ELECTRONICO
+     * 
+     * @param type $mensaje
+     * @param type $asunto
+     * @param type $para
+     */
+    public function EnviarCorreoElectronico($mensaje, $asunto, $para) {
+
+        $message = \Swift_Message::newInstance()
+                ->setSubject($asunto)
+                ->setFrom('webmaster@fundeuis.com')
+                ->setTo($para)
+                ->setBody(
+                $this->renderView(
+                        'FundeuisEducacionBundle:Estudiantenf:email.html.twig', array('mensaje' => $mensaje)
+                ), 'text/html');
+        $this->get('mailer')->send($message);
     }
 
 }

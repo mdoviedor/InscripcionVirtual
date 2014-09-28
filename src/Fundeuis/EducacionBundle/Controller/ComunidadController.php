@@ -11,9 +11,9 @@ class ComunidadController extends Controller {
         if ($this->get('security.context')->isGranted('ROLE_ESTUDIANTENF')) {//Existe una sesion con el usuario Rol ADMINISTRADOR;            
             return$this->redirect($this->generateUrl('estudiantenf_educacion_estudiantenf_inicioPreinscripcion'));
         } elseif ($this->get('security.context')->isGranted('ROLE_ADMINISTRADOR')) {
-            return $this->redirect($this->generateUrl('administrador_educacion_estudiantenf'));
+            return $this->redirect($this->generateUrl('administrador_educacion_estudiantenf_inicio'));
         } elseif ($this->get('security.context')->isGranted('ROLE_SUPERADMINISTRADOR')) {
-            return$this->redirect($this->generateUrl('administrador_educacion_estudiantenf'));
+            return$this->redirect($this->generateUrl('administrador_educacion_estudiantenf_inicio'));
         } else {
             //return $this->redirect($this->generateUrl('fos_user_security_login'));      
             return $this->render('FundeuisEducacionBundle:Comunidad:index.html.twig', array());
